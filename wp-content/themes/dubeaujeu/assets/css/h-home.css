@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#du-beau-jeu {
+    /*width: 100%;*/
+    padding: 20px;
+}
+
+#du-beau-jeu .box {
+    float: left;
+    margin: 0 10px 10px 0;
+}

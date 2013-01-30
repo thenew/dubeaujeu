@@ -30,6 +30,6 @@
 
 <body <?php body_class(); ?>>
     <header class="header">
-        <!-- <h1 class="logo">Fondations</h1> -->
+        <h1 class="logo">Du Beau Jeu</h1>
     </header>
     <div class="main">

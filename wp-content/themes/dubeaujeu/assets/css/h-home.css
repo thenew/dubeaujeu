@@ -21,7 +21,7 @@
 
 .main {
     text-align: center;
-    padding: 20px;
+    padding: 14px;
 }
 
 #du-beau-jeu {
@@ -61,7 +61,7 @@
    Animations
    ------------------------------------------------------- */
 
-ul[data-liffect="slideTop"] .li {
+[data-liffect="slideTop"] .li {
     opacity: 0;
     position: relative;
     -webkit-animation: slideTop 600ms ease both;
@@ -74,7 +74,7 @@ ul[data-liffect="slideTop"] .li {
     animation-play-state: paused;
 }
 
-ul[data-liffect="slideTop"].play .li {
+[data-liffect="slideTop"].play .li {
     -webkit-animation-play-state: running;
     -moz-animation-play-state: running;
     -o-animation-play-state: running;

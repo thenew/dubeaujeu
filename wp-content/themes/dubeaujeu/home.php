@@ -1,20 +1,38 @@
-<?php get_header();
-// $sizes = array("thumbnail", "medium");
-$sizes = array("thumbnail");
+<?php
+if(!isset($_GET['ajax']) && $_GET['ajax'] != "1")
+    get_header();
+
+$paged = (isset($_GET['page'])) ? $_GET['page'] : $paged;
+
 $args = array(
     'post_type'      => 'attachment',
     'post_status'    => 'any',
-    'posts_per_page' => -1
+    'posts_per_page' => 6,
+    'paged'          => $paged
 );
-query_posts($args); ?>
-<ul id="du-beau-jeu" class="cf" data-liffect="slideTop">
-    <?php while (have_posts()) : the_post(); ?>
-        <?php $img = wp_get_attachment_image_src(get_the_ID(),$sizes[rand(0,count($sizes)-1)]); ?>
-        <li class="box">
-            <img class="li" src="<?php echo $img[0]; ?>" alt="" />
-        </li>
-    <?php endwhile; ?>
-</ul>
+query_posts($args);
+$wides = 0;
+if(!isset($_GET['ajax']) && $_GET['ajax'] != "1"): ?>
+    <div id="du-beau-jeu" class="cf" data-liffect="slideTop" data-paged="<?php echo $paged; ?>">
 <?php
+endif;
+    while (have_posts()) : the_post();
+        $img = wp_get_attachment_image_src(get_the_ID(), "full");
+        $ratio = $img[1]/$img[2];
+        $is_wide = (($wides/$query_posts->found_posts < 0.2) && $ratio > 1.9 && $img[1] > 660) ? true : false;
+        if($is_wide) $wides++;
+        $size = ($is_wide) ? "medium" : "thumbnail";
+        $thumb = wp_get_attachment_image_src(get_the_ID(),$size);
+        $thumb = $thumb[0];
+        ?>
+        <div class="box">
+            <img class="li" src="<?php echo $thumb; ?>" alt="" />
+        </div>
+    <?php endwhile;
+if(!isset($_GET['ajax']) && $_GET['ajax'] != "1"): ?>
+</div>
+<?php
+endif;
 wp_reset_query();
-get_footer();
+if(!isset($_GET['ajax']) && $_GET['ajax'] != "1")
+    get_footer();

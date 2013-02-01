@@ -1,10 +1,22 @@
 window.addEvent('domready',function(){
 
     if($('du-beau-jeu')){
-        $('du-beau-jeu').addClass('loading');
+        var el = $('du-beau-jeu');
+        el.addClass('loading');
+        var dbjThumbs = Asset.images(el.getElements('img'), {
+            onComplete: function(){
+                el.removeClass('loading')
+                    .masonry({
+                        columnWidth: 330,
+                        itemSelector: '.box'
+                    });
+                el.addClass('play');
+                var infiniteScroll = new InfiniteScroll('du-beau-jeu');
+            }
+        });
     }
 
-    $$("ul[data-liffect] .li").each(function (el,i) {
+    $$("[data-liffect] .li").each(function (el,i) {
         var delay = (i*100)+200;
         el.set("style", "-webkit-animation-delay:" + delay + "ms;"
             + "-moz-animation-delay:" + delay + "ms;"
@@ -15,13 +27,5 @@ window.addEvent('domready',function(){
 });
 
 window.addEvent('load',function(){
-
-    if($('du-beau-jeu')){
-        $('du-beau-jeu').removeClass('loading')
-            .masonry({
-                itemSelector: '.box'
-            });
-        $('du-beau-jeu').addClass('play');
-    }
 
 });

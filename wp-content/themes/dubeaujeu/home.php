@@ -7,7 +7,6 @@ $paged = (isset($_GET['page'])) ? $_GET['page'] : $paged;
 $args = array(
     'post_type'      => 'attachment',
     'post_status'    => 'any',
-    'posts_per_page' => 6,
     'paged'          => $paged
 );
 query_posts($args);

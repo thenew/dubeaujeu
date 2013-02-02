@@ -19,17 +19,16 @@ var InfiniteScroll = new Class({
         inf.maxPaged = 90000;
         inf.timeOut = 0;
         inf.inProgress = false;
+        inf.url = new URI();
 
         // actions
         inf.scroll();
     },
     scroll: function() {
         var inf = this;
-        var totalHeight, currentScroll, visibleHeight;
-            totalHeight = document.body.offsetHeight;
-            visibleHeight = document.documentElement.clientHeight;
+        var documentHeight, scrollY, clientHeight, elHeight;
         // if no scroll
-        // if(totalHeight === visibleHeight ) {
+        // if(documentHeight === clientHeight ) {
         //     clearTimeout(inf.timeOut);
         //     inf.timeOut = setTimeout(function() {
         //         if(!inf.inProgress && inf.paged+1 < inf.maxPaged)
@@ -38,11 +37,15 @@ var InfiniteScroll = new Class({
         // } else {
 
             $(window).addEvent('scroll',function(e){
-                currentScroll = window.getScroll().y;
-                totalHeight = document.body.offsetHeight;
-                visibleHeight = document.documentElement.clientHeight;
+                scrollY = window.getScroll().y;
+                documentHeight = document.body.offsetHeight;
+                clientHeight = document.documentElement.clientHeight;
+                elHeight = inf.element.getHeight();
+                // console.log('el '+ elHeight);
+                // console.log(scrollY+clientHeight);
 
-                if(currentScroll >= totalHeight - visibleHeight - 100){
+                // if(scrollY >= documentHeight - clientHeight - 100){
+                if(elHeight - 200 <= scrollY+clientHeight){
                     clearTimeout(inf.timeOut);
                     inf.timeOut = setTimeout(function() {
                         if(!inf.inProgress && inf.paged+1 < inf.maxPaged)
@@ -54,25 +57,20 @@ var InfiniteScroll = new Class({
     },
     loadMore: function() {
         var inf = this;
-        var url = new URI();
-        var sParam = url.getData('s');
         var request = new Request({
             url: '',
             method: 'get',
-            data: {'ajax':'1', 'mode': 'infinitescroll', 'page': inf.paged+1},
+            data: {'ajax':'1', 'page': inf.paged+1},
             onRequest: function(){
-                inf.inProgress = true;
                 inf.loading();
             },
             onFailure: function(xhr){
-                inf.inProgress = false;
                 inf.maxPaged = inf.paged;
                 inf.stopLoading();
             },
             onSuccess: function(response){
                 if(response === "") {
                     // no more content
-                    inf.inProgress = true;
                     inf.maxPaged = inf.paged;
                     inf.stopLoading();
                 }else {
@@ -83,36 +81,43 @@ var InfiniteScroll = new Class({
     },
     reveal: function(response) {
         var inf = this;
-        var append = new Element('div', {'class': 'append', 'data-liffect': 'slideTop'});
+        var append = new Element('div', {'class': 'boxes'});
         append.set('html', response)
             .inject(inf.element);
 
-        var dbjThumbs = Asset.images(append.getElements('img'), {
+        var dbjThumbs = Asset.images(append.getElements('img').get('src'), {
             onComplete: function(){
                 inf.element.masonry({
-                        appendedContent: inf.element.getElements('.append:last-child')[0],
+                        appendedContent: inf.element.getElements('.boxes:last-child')[0],
                         columnWidth: 330,
                         itemSelector: '.box'
                     });
                 inf.liffect(append);
                 inf.paged++;
+                // if hasPushState
+                if(!!(window.history && history.pushState)) {
+                    inf.url.set('directory', '/page/'+inf.paged);
+                    // history.pushState('', '', inf.url.toString());
+                }
                 inf.stopLoading();
-                inf.inProgress = false;
             }
         });
     },
     loading: function() {
         var inf = this;
+        inf.inProgress = true;
         inf.element.addClass("loading");
+        $('main-loader').addClass("loading");
     },
     stopLoading: function() {
         var inf = this;
         inf.element.removeClass("loading");
+        $('main-loader').removeClass("loading");
+        inf.inProgress = false;
     },
     liffect: function(el) {
         var inf = this;
-        inf.element.set('data-liffect', '');
-        el.getElements(".li").each(function (el,i) {
+        el.getElements(".el").each(function (el,i) {
             var delay = i*100;
             el.set("style", "-webkit-animation-delay:" + delay + "ms;"
                 + "-moz-animation-delay:" + delay + "ms;"

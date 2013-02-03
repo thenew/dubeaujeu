@@ -18,11 +18,15 @@ window.addEvent('domready',function(){
     }
 
     $$("[data-liffect] .el").each(function (el,i) {
-        var delay = (i*100)+200;
+        var delay = i*300;
         el.set("style", "-webkit-animation-delay:" + delay + "ms;"
             + "-moz-animation-delay:" + delay + "ms;"
             + "-o-animation-delay:" + delay + "ms;"
             + "animation-delay:" + delay + "ms;");
     });
+
+    popinTrigger($$('.popin-trigger'));
+
+    heartLike($$('.heart'));
 
 });

@@ -96,9 +96,13 @@ var InfiniteScroll = new Class({
                 inf.paged++;
                 // if hasPushState
                 if(!!(window.history && history.pushState)) {
-                    inf.url.set('directory', '/page/'+inf.paged);
+                    // inf.url.set('directory', '/page/'+inf.paged);
+                    // inf.url.set('fragment', 'home');
                     // history.pushState('', '', inf.url.toString());
                 }
+                popinTrigger(append.getElements('.popin-trigger'));
+                heartLike(append.getElements('.heart'));
+
                 inf.stopLoading();
             }
         });
@@ -106,19 +110,21 @@ var InfiniteScroll = new Class({
     loading: function() {
         var inf = this;
         inf.inProgress = true;
-        inf.element.addClass("loading");
+        // inf.element.addClass("loading");
         $('main-loader').addClass("loading");
     },
     stopLoading: function() {
         var inf = this;
         inf.element.removeClass("loading");
-        $('main-loader').removeClass("loading");
         inf.inProgress = false;
+        (function(){
+            $('main-loader').removeClass("loading");
+        }).delay(100);
     },
     liffect: function(el) {
         var inf = this;
         el.getElements(".el").each(function (el,i) {
-            var delay = i*100;
+            var delay = i*200;
             el.set("style", "-webkit-animation-delay:" + delay + "ms;"
                 + "-moz-animation-delay:" + delay + "ms;"
                 + "-o-animation-delay:" + delay + "ms;"

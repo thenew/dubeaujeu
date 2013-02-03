@@ -1,3 +1,9 @@
+<?php
+if(WP_DEBUG) {
+  global $template;
+  echo basename($template);
+}
+?>
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="no-js ie6 lt_ie7 lt_ie8 lt_ie9 lt_ie10" <?php language_attributes(); ?> dir="ltr"> <![endif]-->
 <!--[if IE 7 ]>    <html class="no-js ie7 lt_ie8 lt_ie9 lt_ie10" <?php language_attributes(); ?> dir="ltr"> <![endif]-->
@@ -24,7 +30,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <header class="header">
-        <h1 class="logo">“ Du Beau Jeu ”</h1>
+    <header id="home" class="header">
+        <h1 class="logo">Du Beau Jeu</h1>
     </header>
-    <div class="main">
+    <div id="main" class="main">

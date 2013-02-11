@@ -1,5 +1,5 @@
 <?php
-if(!isset($_GET['ajax']) && $_GET['ajax'] != "1")
+if(!isset($_GET['ajax']) || $_GET['ajax'] != "1")
     get_header();
 
 $paged = (isset($_GET['page'])) ? $_GET['page'] : $paged;
@@ -13,7 +13,7 @@ $args = array(
 query_posts($args);
 $wides = 0;
 
-if(!isset($_GET['ajax']) && $_GET['ajax'] != "1"): ?>
+if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
     <div id="du-beau-jeu" class="cf" data-liffect="zoomIn" data-paged="<?php echo $paged; ?>">
         <div class="boxes">
 <?php endif;
@@ -38,12 +38,12 @@ if(!isset($_GET['ajax']) && $_GET['ajax'] != "1"): ?>
             </a>
         </div>
     <?php endwhile;
-if(!isset($_GET['ajax']) && $_GET['ajax'] != "1"): ?>
+if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
     </div>
 </div>
 <div id="main-loader">Loading</div>
 <?php
 endif;
 wp_reset_query();
-if(!isset($_GET['ajax']) && $_GET['ajax'] != "1")
+if(!isset($_GET['ajax']) || $_GET['ajax'] != "1")
     get_footer();

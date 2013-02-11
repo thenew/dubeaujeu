@@ -1,9 +1,3 @@
-<?php
-if(WP_DEBUG) {
-  global $template;
-  echo basename($template);
-}
-?>
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="no-js ie6 lt_ie7 lt_ie8 lt_ie9 lt_ie10" <?php language_attributes(); ?> dir="ltr"> <![endif]-->
 <!--[if IE 7 ]>    <html class="no-js ie7 lt_ie8 lt_ie9 lt_ie10" <?php language_attributes(); ?> dir="ltr"> <![endif]-->
@@ -13,7 +7,7 @@ if(WP_DEBUG) {
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <title><?php bloginfo('name'); ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=690">
 
     <?php if(FONDATIONS_BOOTSTRAP): ?>
         <link rel="stylesheet" href="<?php echo BOOTSTRAP_URL; ?>/docs/assets/css/bootstrap.css">

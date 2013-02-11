@@ -56,7 +56,7 @@ if(!empty($_POST["super_add"]["url"])) {
 }
 ?>
 
-<form name="super_add" method="POST" action="" style="width: 180px; margin: 100px auto;">
+<form name="super_add" method="POST" action="" style="width: 300px; margin: 100px auto;">
     <?php echo $msg; ?>
     <div><input type="text" name="super_add[url]" placeholder="http://pipou.jpg" autofocus required /></div>
     <div><input type="text" name="super_add[title]" placeholder="Pipou" /></div>

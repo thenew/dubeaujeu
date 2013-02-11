@@ -12,7 +12,7 @@ if(!empty($_POST["super_add"]["url"])) {
     // uploads directory
     if(!is_dir($upload_dir))
         @mkdir($upload_dir);
-    @chmod($upload_dir, "0777");
+    @chmod($upload_dir, 0777);
     $filename = $upload_dir.$img_name;
     if(!file_exists($filename)) {
         if(file_put_contents($filename, $img_content)) {

@@ -71,7 +71,7 @@
    ------------------------------------------------------- */
 
 .page-wrap {
-    width: 300px;
+    width: 400px;
     margin: 0 auto;
     padding: 40px;
     background-color: #fff;
@@ -86,7 +86,7 @@
     font-size: 32px;
     color: #999;
     line-height: 1.2;
-    margin: 5px auto 20px;
+    margin: 5px auto 30px;
 }
 
 .post-content {
@@ -95,6 +95,39 @@
     color: #999;
     line-height: 1.4;
     margin-bottom: 10px;
+}
+
+.post-content li,
+.post-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.post-content h2 {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-size: 20px;
+    margin: 8px auto 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-content a {
+    color: #999;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    text-decoration: none;
+    padding: 0 4px;
+    -webkit-transition: background-color .2s ease-out;
+    -moz-transition: background-color .2s ease-out;
+    -o-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+}
+
+.post-content a:focus,
+.post-content a:hover {
+    color: #999;
+    background-color: #ddd;
 }
 
 

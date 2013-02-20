@@ -20,7 +20,8 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
     while (have_posts()) : the_post();
         $img = wp_get_attachment_image_src(get_the_ID(), "full");
         $ratio = $img[1]/$img[2];
-        $is_wide = ($wides < 2 && $ratio > 1.9 && $img[1] > 660) ? true : false;
+        // $is_wide = ($wides < 2 && $ratio > 1.9 && $img[1] > 660) ? true : false;
+        $is_wide = false;
         if($is_wide) $wides++;
         $size = ($is_wide) ? "medium" : "thumbnail";
         $thumb = wp_get_attachment_image_src(get_the_ID(),$size);
@@ -32,9 +33,14 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
             $title = get_the_title();
         ?>
         <div class="box">
-            <div class="caption"><a class="heart" href="<?php the_permalink(); ?>"></a><span class="post-title"><?php echo $title; ?></span></div>
-            <a class="popin-trigger el-link" href="<?php the_permalink(); ?>">
-                <img class="el" src="<?php echo $thumb; ?>" alt="" />
+            <div class="caption">
+                <a class="heart" href="<?php the_permalink(); ?>"><span class="love">Love</span></a>
+                <span class="post-title"><?php echo $title; ?></span>
+            </div>
+            <a class="popin-trigger el-link" href="<?php the_permalink(); ?>" data-bg="<?php echo $thumb; ?>">
+                <div class="el">
+                    <img class="" src="<?php echo $thumb; ?>" alt="" />
+                </div>
             </a>
         </div>
     <?php endwhile;

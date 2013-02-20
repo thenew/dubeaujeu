@@ -11,30 +11,36 @@ function popinTrigger(els) {
                     link.addClass('loading');
                 },
                 onSuccess: function(response){
-                    var popin = new Element('div', {'id': 'popin', 'html': response});
+                    var popin = new Element('div', {'id': 'popin'});
+                    var popinContent = new Element('div', {'class': 'popin-content', 'html': response});
+                    var popinOverlay = new Element('div', {'class': 'popin-overlay', 'style': 'background-image:url('+el.get('data-bg')+')'});
                     var popinCaption = new Element('div', {'class': 'popin-caption', 'html':'Press <small>ESC</small> to exit'});
 
                     popin.setStyles({'display':'none', 'opacity':0})
+                        .grab(popinOverlay)
+                        .grab(popinContent)
                         .grab(popinCaption)
-                        .inject($('main'))
+                        .inject(document.body)
                         .morph({'display':'block', 'opacity':1});
 
                     link.removeClass('loading');
 
+                    var closeFx = new Fx.Morph(
+                        popin,
+                        {onComplete:function(){
+                            popin.destroy();
+                        }}
+                    );
                     $(window).addEvent('keydown', function(e){
                         // close
                         if(e.key == 'esc') {
-                            var closeFx = new Fx.Morph(
-                                popin,
-                                {onComplete:function(){
-                                    popin.destroy();
-                                }}
-                            );
                             closeFx.start({'opacity':0});
-                        // nav
-                        } else if(e.key == "right" || e.key == "left") {
-                            // popinNav(link, e.key);
                         }
+                    });
+                    popinOverlay.addEvent('click', function(e){
+                        // close
+                        e.stop();
+                        closeFx.start({'opacity':0});
                     });
                 }
             }).send();

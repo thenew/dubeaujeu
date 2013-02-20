@@ -1,29 +1,47 @@
 <?php
-$param_404 = str_replace(array('?', '/', '=', '-'), ' ', strip_tags($_SERVER['REQUEST_URI']));
-
 get_header();
-// echo '<div class="page">';
-    // echo '<h1>' . __('404 Page not found', 'fon_lang') . '</h1>';
-    if (!empty($param_404)) {
-        echo '<h2 class="e404-title">'.$param_404.' ? </h2>';
-        $args_404 = array(
-            // 'posts_per_page' => '5',
-            // 'post_type' => 'any',
-            's' => $param_404
-        );
-        $q_404 = new WP_Query( $args_404 );
-        if (have_posts()) :
-            // echo '<ul>';
-            //     while ( $the_query->have_posts() ) : $the_query->the_post();
-            //         echo '<li>';
-            //         get_template_part('loop', 'short');
-            //         echo '</li>';
-            //     endwhile;
-            // echo '</ul>';
-        endif;
-        wp_reset_postdata();
-    }
-// echo '</div>';
-// get_sidebar();
-echo '<script type="text/javascript" src="'.ASSETS_URL.'/js/e404.js"></script>';
+$q_args = array(
+    'post_type'      => 'attachment',
+    'post_status'    => 'any',
+    'orderby'        => 'rand',
+    'posts_per_page' => 400
+);
+$q_query = new WP_Query($q_args);
+if($q_query->have_posts()): ?>
+    <div id="main">
+        <div class="cf mosaic">
+            <?php while($q_query->have_posts()):$q_query->the_post();
+                $size = "thumbnail";
+                $thumb = wp_get_attachment_image_src(get_the_ID(),$size);
+                $thumb = $thumb[0];
+                ?>
+                <div class="photo"><img src="<?php echo $thumb ?>" alt="<?php the_title_attribute(); ?>" /></div>
+            <?php endwhile; ?>
+        </div>
+        <h1 class="title">
+            404
+            <i class="a"></i>
+            <i class="b"></i>
+            <i class="c"></i>
+            <i class="d"></i>
+            <i class="e"></i>
+            <i class="e2"></i>
+            <i class="f"></i>
+            <i class="g"></i>
+            <i class="h"></i>
+            <i class="i"></i>
+            <i class="j"></i>
+            <i class="k"></i>
+            <i class="l"></i>
+            <i class="m"></i>
+            <i class="n"></i>
+            <i class="o"></i>
+            <i class="p"></i>
+            <i class="q"></i>
+            <i class="r"></i>
+            <i class="r2"></i>
+        </h1>
+    </div>
+<?php endif; ?>
+<?php wp_reset_postdata();
 get_footer();

@@ -16,8 +16,9 @@
     <?php if(FONDATIONS_CSSNORMALIZE): ?>
         <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/lib/cssnormalize.php">
     <?php endif; ?>
-    <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php">
-    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/favicon.png">
+    <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php" />
+    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
 
     <?php include TEMPLATEPATH . '/tpl/metas/tpl_metas.php'; ?>
     <?php wp_head(); ?>
@@ -25,6 +26,6 @@
 
 <body <?php body_class(); ?>>
     <header id="home" class="header">
-        <h1 class="logo">Du Beau Jeu</h1>
+        <h1 class="logo">Du Beau Jeu</h1><a class="popin-trigger about-btn" href="<?php echo site_url( '/about' ); ?>" >✳</a>
     </header>
     <div id="main" class="main">

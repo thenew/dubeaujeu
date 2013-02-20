@@ -7,4 +7,8 @@
     }
     update_post_meta( get_the_ID(), '_heart_like', $new_value );
 } ?>
-<div class="single" style="background-image:url(<?php echo $post->guid ?>);"></div>
+<div id="content">
+    <div class="single">
+        <img src="<?php echo $post->guid ?>" alt="" />
+    </div>
+</div>

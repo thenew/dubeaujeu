@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'LeagueScriptNumberOne';
+    src: url('assets/fonts/LeagueScriptNumberOne-webfont.eot');
+    src: url('assets/fonts/LeagueScriptNumberOne-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/LeagueScriptNumberOne-webfont.woff') format('woff'),
+         url('assets/fonts/LeagueScriptNumberOne-webfont.ttf') format('truetype'),
+         url('assets/fonts/LeagueScriptNumberOne-webfont.svg#LeagueScriptNumberOne') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'courier_prime';
+    src: url('assets/fonts/courier_prime.eot');
+    src: url('assets/fonts/courier_prime.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/courier_prime.woff') format('woff'),
+         url('assets/fonts/courier_prime.ttf') format('truetype'),
+         url('assets/fonts/courier_prime.svg#courier_primeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
+    text-align: center;
+    margin: 20px auto;
+    font-family: 'LeagueScriptNumberOne', serif;
+}
+
+.header .logo {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    color: #222;
+    font-size: 50px;
+}
+
+.header .about-btn {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 15px;
+    position: relative;
+    top: -18px;
+    left: 0px;
+    color: #222;
+    font-size: 23px;
+    opacity: 0;
+    text-decoration: none;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -o-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+
+.header:hover .about-btn {
+    top: -20px;
+    left: 5px;
+    opacity: .95;
+}
+
+.main {
+    position: relative;
+    text-align: center;
+    padding: 14px;
+}
+
+/* ----------------------------------------------------------
+   Page / pot
+   ------------------------------------------------------- */
+
+.page-wrap {
+    width: 300px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    background-color: rgba(255,255,255,.95);
+    -webkit-box-shadow: 0 0 40px 5px rgba(0,0,0,.8);
+    -moz-box-shadow: 0 0 40px 5px rgba(0,0,0,.8);
+    box-shadow: 0 0 40px -5px rgba(0,0,0,.99);
+}
+
+.page-title {
+    font-family: 'LeagueScriptNumberOne', serif;
+    font-size: 32px;
+    color: #999;
+    line-height: 1.2;
+    margin: 5px auto 20px;
+}
+
+.post-content {
+    font-family: 'courier_prime', sans-serif;
+    font-size: 16px;
+    color: #999;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+
+/* ----------------------------------------------------------
+   Popin
+   ------------------------------------------------------- */
+
+#popin {
+    /*display: table;*/
+    display: block;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1.5%;
+    text-align: center;
+    background-color: rgba(255,255,255,.8);
+}
+
+#popin .popin-overlay {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 1000%;
+    opacity: 0.85;
+    cursor: pointer;
+    /* enabeld hw accelerated */
+    -webkit-transform: translateZ(0);
+    -webkit-filter: blur(100px);
+}
+
+#popin .popin-content {
+    position: relative;
+    z-index: 2;
+    display: inline-block;/*
+    z-index: 10000;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;*/
+}
+
+#popin #content {/*
+    display:table;
+    position: relative;*/
+    z-index: 2;
+    /*width: 100%;*/
+    text-align: center;
+}
+
+#popin #content .single {/*
+    display: table-cell;
+    z-index: 2;
+    vertical-align: middle;*/
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    position: relative;
+    text-align: center;
+}
+
+#popin #content,
+#popin #content .single img,
+#popin .popin-content,
+#popin #content .single {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+}
+
+#popin #content .single img {
+    height: 100%;
+}
+
+#popin #content .single img {
+    -webkit-box-shadow: 0 0 40px 5px rgba(0,0,0,.8);
+    -moz-box-shadow: 0 0 40px 5px rgba(0,0,0,.8);
+    box-shadow: 0 0 40px -5px rgba(0,0,0,.99);
+}
+
+#popin .popin-caption {
+    position: absolute;
+    z-index: 51;
+    top: 15px;
+    left: 15px;
+    font-family: 'courier_prime', sans-serif;
+    font-size: 12px;
+    color: #ededed;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    line-height: 1.4;
+}
+
+#popin .popin-caption small {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    padding: 0 2px;
+    font-size: inherit;
+    font-variant: small-caps;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    -o-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+
+
+/* ----------------------------------------------------------
+   Objects
+   ------------------------------------------------------- */
+
+.heart {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    position: relative;
+    z-index: 1;
+    width: 45px;
+    height: 5px;
+}
+
+.caption .heart {
+    margin-right: 4px;
+    cursor: pointer;
+    -webkit-transform: scale(0.35);
+    -moz-transform: scale(0.35);
+    -o-transform: scale(0.35);
+    transform: scale(0.35);
+    -webkit-transform-origin: center bottom;
+    -moz-transform-origin: center bottom;
+    -o-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-transition: all 2s ease-out;
+    -moz-transition: all 2s ease-out;
+    -o-transition: all 2s ease-out;
+    transition: all 2s ease-out;
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    z-index: 1;
+    content: "";
+    left: 0;
+    top: -30px;
+    width: 30px;
+    height: 50px;
+    background: #FA0561;
+    -webkit-border-radius: 50px 50px 0 0;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0,100%;
+    -moz-transform-origin: 0,100%;
+    -o-transform-origin: 0,100%;
+    transform-origin: 0,100%;
+}
+
+.heart:after {
+    right: 0;
+    left: auto;
+   -webkit-box-shadow: 3px -20px 5px 3px rgba(51,51,51,.6);
+   -moz-box-shadow: 3px -20px 5px 3px rgba(51,51,51,.6);
+   -o-box-shadow: 3px -20px 5px 3px rgba(51,51,51,.6);
+   box-shadow: 3px -20px 5px 3px rgba(51,51,51,.6);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 100%,100%;
+    -moz-transform-origin: 100%,100%;
+    -o-transform-origin: 100%,100%;
+    transform-origin: 100%,100%;
+}
+
+.heart:hover {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+/*.heart.liked {*/
+.heart.liked:before,
+.heart.liked:after {
+    background: #B7285E;
+}
+
+.heart.liked {
+    cursor: normal;
+    -webkit-transition: all .1s ease-out;
+    -moz-transition: all .1s ease-out;
+    -o-transition: all .1s ease-out;
+    transition: all .1s ease-out;
+}
+
+.heart.liked:hover {
+    -webkit-transform: scale(0.35);
+    -moz-transform: scale(0.35);
+    -o-transform: scale(0.35);
+    transform: scale(0.35);
+}
+
+.heart .love {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    bottom: 30px;
+    font-size: 11px;
+    color: #fff;
+    text-shadow: 0 0 1px #FA0561;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 2s ease-out;
+    -moz-transition: all 2s ease-out;
+    -o-transition: all 2s ease-out;
+    transition: all 2s ease-out;
+}
+
+.heart:hover .love {
+    font-size: 14px;
+    bottom: 50px;
+    opacity: .95;
+    visibility: visible;
+}
+
+.heart.liked:hover .love,
+.heart.liked .love {
+    font-size: 14px;
+    bottom: 40px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}

@@ -9,6 +9,7 @@ function fon_script_init() {
         wp_enqueue_script('modernizr',ASSETS_URL.'/js/lib/modernizr-1.7.min.js','','1.7',false);
         wp_enqueue_script('moomasonry',ASSETS_URL.'/js/mooMasonry.js','','1.0',false);
         wp_enqueue_script('infinitescroll',ASSETS_URL.'/js/InfiniteScroll.js','','1.0',false);
+        // wp_enqueue_script('fonpopin',ASSETS_URL.'/js/FonPopin.js','','1.0',false);
         wp_enqueue_script('functions',ASSETS_URL.'/js/functions.js','','1.0',false);
         wp_enqueue_script('events',ASSETS_URL.'/js/events.js','','1.0',false);
     }

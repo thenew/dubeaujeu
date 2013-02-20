@@ -1,5 +1,15 @@
 window.addEvent('domready',function(){
 
+    // set delay in .box
+    $$("[data-liffect] .box").each(function (el,i) {
+        var delay = i*300-20;
+        el.set("style", "-webkit-animation-delay:" + delay + "ms;"
+            + "-moz-animation-delay:" + delay + "ms;"
+            + "-o-animation-delay:" + delay + "ms;"
+            + "animation-delay:" + delay + "ms;");
+    });
+
+    // mask content during loading assets and play on complete
     if($('du-beau-jeu')){
         var el = $('du-beau-jeu');
         el.addClass('loading');
@@ -17,15 +27,12 @@ window.addEvent('domready',function(){
         });
     }
 
-    $$("[data-liffect] .el").each(function (el,i) {
-        var delay = i*300;
-        el.set("style", "-webkit-animation-delay:" + delay + "ms;"
-            + "-moz-animation-delay:" + delay + "ms;"
-            + "-o-animation-delay:" + delay + "ms;"
-            + "animation-delay:" + delay + "ms;");
-    });
 
     popinTrigger($$('.popin-trigger'));
+
+    // $$('.fon-popin-trigger').each(function(el,i){
+    //     var fonPopin = FonPopin(el);
+    // });
 
     heartLike($$('.heart'));
 

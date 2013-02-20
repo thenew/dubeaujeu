@@ -65,6 +65,6 @@ if(!empty($_POST["super_add"]["url"])) {
     <?php echo $msg; ?>
     <div><textarea type="text" name="super_add[url]" placeholder="http://pipou.jpg" cols="60" rows="8" autofocus required></textarea></div>
     <div><input type="text" name="super_add[title]" placeholder="Pipou" /></div>
-    <div><input type="checkbox" name="super_add[is_post]" /><labe for="super_add[is_post]">Créer un post</label></div>
+    <div><input type="checkbox" name="super_add[is_post]" id="super_add[is_post]" /><label for="super_add[is_post]">Créer un post</label></div>
     <div><button type="submit">Add</button></div>
 </form>

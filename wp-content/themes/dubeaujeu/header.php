@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php" />
     <link rel="icon" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
     <link rel="apple-touch-icon-precomposed" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
+    <link rel="logo" type="image/png" href="<?php echo TEMPLATE_URL ?>/logo.png"/>
 
     <?php include TEMPLATEPATH . '/tpl/metas/tpl_metas.php'; ?>
     <?php wp_head(); ?>

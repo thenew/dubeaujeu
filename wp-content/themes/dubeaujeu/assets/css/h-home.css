@@ -100,13 +100,13 @@
 
 /*Hover*/
 
-#du-beau-jeu:hover .box {
-    opacity: .9;
+#du-beau-jeu.loaded:hover .box {
+    /*opacity: .9;*/
 }
 
-#du-beau-jeu .box:hover {
+#du-beau-jeu.loaded .box:hover {
     z-index: 4;
-    opacity: .9999;
+    /*opacity: .9999;*/
     -webkit-box-shadow: 0 0 30px rgba(0,0,0,.3);
     -moz-box-shadow: 0 0 30px rgba(0,0,0,.3);
     -o-box-shadow: 0 0 30px rgba(0,0,0,.3);
@@ -115,7 +115,7 @@
 
 #du-beau-jeu .caption:hover,
 #du-beau-jeu .box:hover .caption {
-    /*opacity: .9999;*/
+    opacity: .9999;
     -webkit-transform: perspective(300px) rotateX(0deg);
     -moz-transform: perspective(300px) rotateX(0deg);
     -o-transform: perspective(300px) rotateX(0deg);
@@ -124,6 +124,9 @@
 
 #du-beau-jeu .box:hover .el {
     -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 /* ----------------------------------------------------------
@@ -181,41 +184,41 @@
 }
 
 @-webkit-keyframes zoomIn {
-    0% { opacity: 0; -webkit-transform: scale(1.08); }
-    100% { opacity: 1; -webkit-transform: scale(1); }
+    0% { opacity: 0; visibility: hidden; -webkit-transform: scale(1.08); }
+    100% { opacity: 1; visibility: visible; -webkit-transform: scale(1); }
 }
 
 @-moz-keyframes zoomIn {
-    0% { opacity: 0; -moz-transform: scale(1.08); }
-    100% { opacity: 1; -moz-transform: scale(1); }
+    0% { opacity: 0; visibility: hidden; -moz-transform: scale(1.08); }
+    100% { opacity: 1; visibility: visible; -moz-transform: scale(1); }
 }
 
 @-o-keyframes zoomIn {
-    0% { opacity: 0; -o-transform: scale(1.08); }
-    100% { opacity: 1; -o-transform: scale(1); }
+    0% { opacity: 0; visibility: hidden; -o-transform: scale(1.08); }
+    100% { opacity: 1; visibility: visible; -o-transform: scale(1); }
 }
 
 @keyframes zoomIn {
-    0% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; visibility: hidden; transform: scale(1.08); }
+    100% { opacity: 1; visibility: visible; transform: scale(1); }
 }
 
 @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; visibility: hidden; }
+    100% { opacity: 1; visibility: visible; }
 }
 
 @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; visibility: hidden; }
+    100% { opacity: 1; visibility: visible; }
 }
 
 @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; visibility: hidden; }
+    100% { opacity: 1; visibility: visible; }
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 0; visibility: hidden; }
+    100% { opacity: 1; visibility: visible; }
 }

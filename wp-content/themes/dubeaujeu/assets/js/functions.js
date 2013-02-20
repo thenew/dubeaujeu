@@ -13,7 +13,11 @@ function popinTrigger(els) {
                 onSuccess: function(response){
                     var popin = new Element('div', {'id': 'popin'});
                     var popinContent = new Element('div', {'class': 'popin-content', 'html': response});
-                    var popinOverlay = new Element('div', {'class': 'popin-overlay', 'style': 'background-image:url('+el.get('data-bg')+')'});
+                    var popinOverlay = new Element('div', {'class': 'popin-overlay'});
+                    if(el.get('data-bg')) {
+                        popin.addClass('s-bg');
+                        popinOverlay.setStyle('style', 'background-image:url('+el.get('data-bg')+')');
+                    }
                     var popinCaption = new Element('div', {'class': 'popin-caption', 'html':'Press <small>ESC</small> to exit'});
 
                     popin.setStyles({'display':'none', 'opacity':0})

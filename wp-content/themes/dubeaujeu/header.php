@@ -18,8 +18,12 @@
     <?php endif; ?>
     <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php" />
     <link rel="icon" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
-    <link rel="apple-touch-icon-precomposed" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
-    <link rel="logo" type="image/png" href="<?php echo TEMPLATE_URL ?>/logo.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/icon-144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/icon-144.png" />
+    <link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL ?>/img/startup.png">
+    <link rel="logo" type="image/png" href="<?php echo ASSETS_URL ?>/img/logo.png"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content=" black-translucent" />
 
     <?php include TEMPLATEPATH . '/tpl/metas/tpl_metas.php'; ?>
     <?php wp_head(); ?>

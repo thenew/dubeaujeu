@@ -179,9 +179,6 @@
 }
 
 #popin #content .single {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
     position: relative;
     text-align: center;
 }
@@ -190,15 +187,17 @@
 #popin #content .single img,
 #popin .popin-content,
 #popin #content .single {
-    display: inline-block;
+    /*display: inline-block;
     *display: inline;
-    *zoom: 1;
+    *zoom: 1;*/
+    display: inline;
     max-width: 100%;
     max-height: 100%;
-    height: 100%;
 }
 
-#popin #content .single img {
+#popin #content,
+#popin .popin-content,
+#popin #content .single {
     height: 100%;
 }
 

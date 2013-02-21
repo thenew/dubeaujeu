@@ -101,15 +101,16 @@
 .post-content p {
     font-size: 16px;
     margin-bottom: 20px;
+    line-height: 1.5em;
 }
 
 .post-content h2 {
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    font-size: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
     margin: 8px auto 16px;
-    border-bottom: 1px solid #ddd;
 }
 
 .post-content a {

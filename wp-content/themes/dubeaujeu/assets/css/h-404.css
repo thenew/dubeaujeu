@@ -4,17 +4,59 @@
     position: relative;
 }
 
+.error404 .mosaic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-filter: blur(1px);
+}
+
+.error404 .photo {
+    float: left;
+    width: 5%;
+    height: 100px;
+    overflow: hidden;
+    opacity: 0.15;
+}
+
+.error404 .photo img {
+    position: relative;
+    top: -500px;
+    left: -500px;
+    width: 6000px;
+    height: 6000px;
+}
+
+.error404 .mosaic .overlay {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    display: block;
+    width: 30%;
+    margin-left: -17%;
+    height: 100px;
+    background-color: rgba(0,0,0,.6);
+    -webkit-box-shadow: 0 0 150px 100px rgba(0,0,0,.6);
+    -moz-box-shadow: 0 0 150px 100px rgba(0,0,0,.6);
+    -o-box-shadow: 0 0 150px 100px rgba(0,0,0,.6);
+    box-shadow: 0 0 150px 100px rgba(0,0,0,.6);
+}
+
 .error404 .title {
     position: absolute;
     top: 100px;
-    left: 400px;
+    /*left: 100px;*/
+    left: 20%;
+    width: 55%;
     height: 300px;
     -webkit-filter: blur(1.5px);
 }
 
 .error404 .title i {
     display: block;
-    width: 100px;
+    /*width: 100px;*/
+    width: 9%;
     height: 100px;
     position: absolute;
     top: 0;
@@ -32,91 +74,69 @@
 }
 .error404 .title .c {
     top: 100px;
-    left: 100px;
+    left: 9.1%;
 }
 .error404 .title .d {
     top: 100px;
-    left: 200px;
+    left: 18.2%;
 }
 .error404 .title .e {
     top: 200px;
-    left: 200px;
+    left: 18.2%;
 }
 .error404 .title .e2 {
-    left: 200px;
+    left: 18.2%;
 }
 /*0*/
 .error404 .title .f {
-    left: 400px;
+    left: 36.4%;
 }
 .error404 .title .g {
     top: 100px;
-    left: 400px;
+    left: 36.4%;
 }
 .error404 .title .h {
     top: 200px;
-    left: 400px;
+    left: 36.4%;
 }
 .error404 .title .i {
     top: 200px;
-    left: 500px;
+    left: 45.5%;
 }
 .error404 .title .j {
     top: 200px;
-    left: 600px;
+    left: 54.6%;
 }
 .error404 .title .k {
     top: 100px;
-    left: 600px;
+    left: 54.6%;
 }
 .error404 .title .l {
-    left: 600px;
+    left: 54.6%;
 }
 .error404 .title .m {
-    left: 500px;
+    left: 45.5%;
 }
 /*4*/
 .error404 .title .n {
-    left: 800px;
+    left: 72.8%;
 }
 .error404 .title .o {
     top: 100px;
-    left: 800px;
+    left: 72.8%;
 }
 .error404 .title .p {
     top: 100px;
-    left: 900px;
+    left: 81.9%;
 }
 .error404 .title .q {
     top: 100px;
-    left: 1000px;
+    left: 91%;
 }
 .error404 .title .r {
     top: 200px;
-    left: 1000px;
+    left: 91%;
 }
 .error404 .title .r2 {
-    left: 1000px;
-}
-
-.error404 .mosaic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-filter: blur(1.5px);
-}
-
-.error404 .photo {
-    float: left;
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-}
-
-.error404 .photo img {
-    position: relative;
-    top: -500px;
-    left: -500px;
-    width: 6000px;
-    height: 6000px;
+    left: 91%;
 }

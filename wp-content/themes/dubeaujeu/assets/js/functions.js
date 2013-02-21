@@ -16,7 +16,7 @@ function popinTrigger(els) {
                     var popinOverlay = new Element('div', {'class': 'popin-overlay'});
                     if(el.get('data-bg')) {
                         popin.addClass('s-bg');
-                        popinOverlay.setStyle('style', 'background-image:url('+el.get('data-bg')+')');
+                        popinOverlay.setStyle('background-image', 'url('+el.get('data-bg')+')');
                     }
                     var popinCaption = new Element('div', {'class': 'popin-caption', 'html':'Press <small>ESC</small> to exit'});
 

@@ -1,0 +1,15 @@
+{
+  "name": "Du Beau Jeu",
+  "description": "Beautiful collection of video games arts.",
+  "launch_path": "/",
+  "icons": {
+    "128": "/wp-content/themes/dubeaujeu/assets/img/icon-144.png"
+  },
+  "developer": {
+    "name": "Rémy barthez",
+    "url": "http://thenew.fr"
+  },
+  "fullscreen": "true",
+  "default_locale": "en",
+  "version": "1.0"
+}

@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Constants
 define('FONDATIONS_VERSION', '0.1');
 define('TEMPLATE_URL',   get_bloginfo('template_directory')); // path with virtual hosts
@@ -48,3 +48,6 @@ function fon_register_widgets(){
         register_widget($widget.'_widget');
     }
 }
+
+// CSS
+if(!WP_DEBUG) require_once(TEMPLATE_PATH.'/style.php');

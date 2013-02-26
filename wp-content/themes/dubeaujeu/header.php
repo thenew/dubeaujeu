@@ -16,12 +16,17 @@
     <?php if(FONDATIONS_CSSNORMALIZE): ?>
         <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/lib/cssnormalize.php">
     <?php endif; ?>
-    <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php" />
-    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/favicon.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/icon-144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/icon-144.png" />
-    <link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL ?>/img/startup.png">
-    <link rel="logo" type="image/png" href="<?php echo ASSETS_URL ?>/img/logo.png"/>
+    <?php // CSS
+    if(WP_DEBUG) { ?>
+        <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/style.php" />
+    <?php } else { ?>
+        <link rel="stylesheet" href="<?php echo TEMPLATE_URL ?>/fon_min.css" />
+    <?php } ?>
+    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/app-icons/favicon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
+    <link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL ?>/img/app-icons/startup.png">
+    <link rel="logo" type="image/png" href="<?php echo ASSETS_URL ?>/img/app-icons/logo.png"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content=" black-translucent" />
 

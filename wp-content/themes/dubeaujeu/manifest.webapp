@@ -3,7 +3,9 @@
   "description": "Beautiful collection of video games arts.",
   "launch_path": "/",
   "icons": {
-    "128": "/wp-content/themes/dubeaujeu/assets/img/icon-144.png"
+    "60": "/wp-content/themes/dubeaujeu/assets/img/app-icons/icon-60.png",
+    "128": "/wp-content/themes/dubeaujeu/assets/img/app-icons/icon-128.png",
+    "256": "/wp-content/themes/dubeaujeu/assets/img/app-icons/icon-256.png"
   },
   "developer": {
     "name": "Rémy barthez",

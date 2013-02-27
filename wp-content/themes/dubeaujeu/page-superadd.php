@@ -19,7 +19,10 @@ if(!empty($_POST["super_add"]["url"])) {
     foreach ($imgs as $img) {
         $img = trim($img);
         $img_content = file_get_contents($img);
-        $img_name = basename($img);
+        if ($_POST["super_add"]["title"])
+            $img_name = sanitize_title($_POST["super_add"]["title"]).'_'.uniqid().'.'.pathinfo($img, PATHINFO_EXTENSION);
+        else
+            $img_name = basename($img);
         $img_title = (!empty($_POST["super_add"]["title"])) ? $_POST["super_add"]["title"] : str_replace(array("-","_")," ",$img_name);
         $upload_dir = wp_upload_dir();
         $upload_dir = $upload_dir["path"]."/a/";

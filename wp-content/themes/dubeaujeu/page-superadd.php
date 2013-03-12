@@ -6,7 +6,7 @@ if(!empty($_POST["super_add"]["url"])) {
     $post_id = false;
     if($_POST["super_add"]["is_post"]) {
         $my_post = array(
-          'post_title'    => $img_title,
+          'post_title'    => $_POST["super_add"]["title"],
           'post_content'  => '',
           'post_status'   => 'publish',
           'post_author'   => 1

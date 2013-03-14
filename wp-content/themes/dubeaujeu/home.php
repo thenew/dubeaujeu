@@ -29,11 +29,17 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
 
         if($post->post_parent) {
             $title = get_the_title($post->post_parent);
-            $title_alt = 'artwork '.$title.' ✳ '.get_the_title();
+            
+            if($title != get_the_title())    
+                $title_alt = $title.' ✳ '.get_the_title();
+            else
+                $title_alt = $title;
         } else {
             $title = get_the_title();
-            $title_alt = 'artwork '.$title;
+            $title_alt = $title;
         }
+        $title_alt = strip_tags($title_alt);
+        $title_alt = esc_attr($title_alt);
         ?>
         <div class="box">
             <div class="caption">

@@ -27,10 +27,13 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
         $thumb = wp_get_attachment_image_src(get_the_ID(),$size);
         $thumb = $thumb[0];
 
-        if($post->post_parent)
+        if($post->post_parent) {
             $title = get_the_title($post->post_parent);
-        else
+            $title_alt = 'artwork '.$title.' ✳ '.get_the_title();
+        } else {
             $title = get_the_title();
+            $title_alt = 'artwork '.$title;
+        }
         ?>
         <div class="box">
             <div class="caption">
@@ -39,7 +42,7 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
             </div>
             <a class="popin-trigger el-link" href="<?php the_permalink(); ?>" data-bg="<?php echo $thumb; ?>">
                 <div class="el">
-                    <img class="" src="<?php echo $thumb; ?>" alt="" />
+                    <img class="" src="<?php echo $thumb; ?>" alt="artwork <?php echo $title_alt; ?>" />
                 </div>
             </a>
         </div>

@@ -1,7 +1,8 @@
 <?php
 
 // Thumbnails : active theme support
-if ( function_exists( 'add_theme_support' ) ) { // Added in 2.9
+add_action( 'after_setup_theme', 'fon_add_theme_support' );
+function fon_add_theme_support() {
     add_theme_support( 'post-thumbnails' );
 }
 
@@ -27,11 +28,16 @@ function unregister_default_wp_widgets() {
 // add_filter( 'show_admin_bar', '__return_false' );
 
 // Custom CSS for the login page
-// Create wp-login.css in your theme folder
-function wpfme_loginCSS() {
-    echo '<link rel="stylesheet" type="text/css" href="'.ASSETS_URL.'/stylesheets/wp-login.css"/>';
+function fon_login_enqueue() {
+    wp_enqueue_style('fon-login', ASSETS_URL.'/css-admin/wp-login.css', array(), '1', 'all');
 }
-add_action('login_head', 'wpfme_loginCSS');
+add_action('login_enqueue_scripts', 'fon_login_enqueue');
+
+// Custom CSS for the login page
+function fon_admin_enqueue() {
+    wp_enqueue_style('fon-admin', ASSETS_URL.'/css-admin/admin.css', array(), '1', 'all');
+}
+add_action('admin_enqueue_scripts', 'fon_admin_enqueue');
 
 // Remove the version number of WP
 remove_action('wp_head', 'wp_generator');
@@ -47,3 +53,18 @@ define('DISALLOW_FILE_EDIT', true);
 // }
 
 // add_action('rewrite_rules_array', fon_set_permalink());
+
+add_action( 'admin_footer-post-new.php', 'fon_media_uploaded_default' );
+add_action( 'admin_footer-post.php', 'fon_media_uploaded_default' );
+
+function fon_media_uploaded_default() { ?>
+<script type="text/javascript">
+jQuery(function($) {
+    var called = 0;
+    $('#wpcontent').ajaxStop(function() {
+        $('[value="uploaded"]').attr( 'selected', true ).parent().trigger('change');
+        called = 1;
+    });
+});
+</script>
+<?php }

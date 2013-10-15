@@ -10,14 +10,14 @@ function remove_menus () {
 	global $submenu;
 
    // delete dashboard menu (Tableau de bord)
-   unset($menu[2]);
+   // unset($menu[2]);
 
 	// delete comments menu
    if(!FONDATIONS_COMMENTS)
 	  unset($menu[25]);
 
    // delete Pages sous-menu
-	// unset($submenu['edit.php?post_type=page'][5]); // toutes le pages
+   // unset($submenu['edit.php?post_type=page'][5]); // toutes le pages
    // unset($submenu['edit.php?post_type=page'][10]); // ajouter
 
    // delete categories link

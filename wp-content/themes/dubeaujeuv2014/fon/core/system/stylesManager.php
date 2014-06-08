@@ -54,7 +54,7 @@ function fon_styles_init() {
     if(is_admin()) return;
 
     // Enqueue each CSS files
-    if(WP_DEBUG) {
+    // if(WP_DEBUG) {
         // List CSS files
         $files = array();
         $dir = opendir(ASSETS_PATH.'/css/');
@@ -68,43 +68,15 @@ function fon_styles_init() {
             wp_enqueue_style(basename($file,'.css'),$file,array(),'1','all');
         }
     // Compress CSS
-    }else {
-        // update file and version of min.css
-        if(!get_option('fon_min_css_version')) {
-            $css_version = fon_update_css();
-        // get version
-        } else {
-            $css_version = get_option('fon_min_css_version');
-        }
-        wp_enqueue_style('fon-min', PUBLIC_URL.'/min.css', array(), $css_version, 'all');
-    }
+    // }else {
+    //     // update file and version of min.css
+    //     if(!get_option('fon_min_css_version')) {
+    //         $css_version = fon_update_css();
+    //     // get version
+    //     } else {
+    //         $css_version = get_option('fon_min_css_version');
+    //     }
+    //     wp_enqueue_style('fon-min', PUBLIC_URL.'/min.css', array(), $css_version, 'all');
+    // }
 }
 
-
-add_action( 'fon_menu_hook', 'fon_menu_styleManager' );
-
-function fon_menu_styleManager(){
-    ?>
-    <h3>CSS minifiés</h3>
-    <?php
-    if( isset( $_POST ) && isset( $_POST['fon_refresh_css'] ) && $_POST['fon_refresh_css'] == 'ok' ) {
-        $css_version = fon_update_css();
-        if($css_version) {
-            ?>
-            <div class="updated">
-                <p><strong>Styles CSS à jour.</strong> (version : <?php echo $css_version; ?>)</p>
-            </div>
-            <?php
-        }
-    }
-    ?>
-    <form name="fon_refresh_css" action="" method="POST" class="fon-form">
-        <div class="form-field">
-            <p>Vous pouvez aussi ajouter à l'URL <code>?fon=deploy</code></p>
-        </div>
-        <p class="submit">
-            <button type="submit" name="fon_refresh_css" id="submit" value="ok" class="button button-primary">Mettre à jour les styles CSS</button>
-        </p>
-    </form>
-    <?php
-}

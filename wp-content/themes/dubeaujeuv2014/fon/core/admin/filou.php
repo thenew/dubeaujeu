@@ -29,15 +29,15 @@ function fon_filou_page() {
     <form id="filou_form" name="filou" class="" action="" method="POST">
         <table class="form-table"><tbody>
             <tr valign="top">
-                <th scope="row"><label for="filou_size_min">Dimensions min.</label></th>
-                <td><input type="range" name="filou[size_min]" min="0" max="1400" step="100" value="<?php echo $size_min; ?>" id="filou_size_min" class="input-range"/><span class="input-range-value"><span class="value"><?php echo $size_min; ?></span>px</span></td>
-            </tr>
-            <tr valign="top">
                 <th scope="row"><label for="'.$field_id.'">URL</label></th>
                 <td>
                     <input type="url" name="filou[url]" value="<?php echo $url; ?>" autofocus />
                     <p class="description">http://www.kickstarter.com/projects/rain-world/project-rain-world</p>
                 </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row"><label for="filou_size_min">Dimensions min.</label></th>
+                <td><input type="range" name="filou[size_min]" min="0" max="1400" step="100" value="<?php echo $size_min; ?>" id="filou_size_min" class="input-range"/><span class="input-range-value"><span class="value"><?php echo $size_min; ?></span>px</span></td>
             </tr>
         </tbody></table>
         <p class="submit">

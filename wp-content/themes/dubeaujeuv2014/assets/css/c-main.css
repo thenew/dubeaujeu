@@ -1,64 +1,70 @@
 @charset "UTF-8";
 
+/* ----------------------------------------------------------
+   Fonts
+   ------------------------------------------------------- */
+
 @font-face {
-    font-family: 'LeagueScriptNumberOne';
-    src: url('assets/fonts/LeagueScriptNumberOne-webfont.eot');
-    src: url('assets/fonts/LeagueScriptNumberOne-webfont.eot?#iefix') format('embedded-opentype'),
-         url('assets/fonts/LeagueScriptNumberOne-webfont.woff') format('woff'),
-         url('assets/fonts/LeagueScriptNumberOne-webfont.ttf') format('truetype'),
-         url('assets/fonts/LeagueScriptNumberOne-webfont.svg#LeagueScriptNumberOne') format('svg');
+    font-family: 'desyrelregular';
+    src: url('../fonts/desyrel-webfont.ttf') format('truetype'),
+         url('../fonts/desyrel-webfont.svg#desyrelregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'courier_prime';
-    src: url('assets/fonts/courier_prime.eot');
-    src: url('assets/fonts/courier_prime.eot?#iefix') format('embedded-opentype'),
-         url('assets/fonts/courier_prime.woff') format('woff'),
-         url('assets/fonts/courier_prime.ttf') format('truetype'),
-         url('assets/fonts/courier_prime.svg#courier_primeregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+body {
+    background-color: #F7F4F7;
+}
+
+.wip {
+    opacity: 0.1;
 }
 
 .header {
     text-align: center;
     padding: 25px 0 15px;
     margin: 0 auto;
-    font-family: 'LeagueScriptNumberOne', serif;
+}
+
+.header .logo-box {
+    display: inline-block;
+    margin-bottom: 30px;
 }
 
 .header .logo {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    color: #222;
-    font-size: 50px;
+    float: left;
+    width: 114px;
+    height: 114px;
+    background: url(../../assets/img/logo.png) center top no-repeat;
 }
 
-.header .about-btn {
+.header .site-title {
+    float: left;
+    font-family: 'desyrelregular', sans-serif;
+    font-size: 52px;
+    color: #485062;
+    line-height: 114px;
+}
+
+.header .menu {
     display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    margin-left: 15px;
-    position: relative;
-    top: -18px;
-    left: 0px;
-    color: #222;
-    font-size: 23px;
-    opacity: 0;
+}
+
+.header .menu-item {
+    float: left;
+}
+
+.header .menu-item + .menu-item {
+    margin-left: 30px;
+}
+
+.header .menu a {
+    color: #485062;
     text-decoration: none;
-    -webkit-transition: all .4s ease-out;
-    -moz-transition: all .4s ease-out;
-    -o-transition: all .4s ease-out;
-    transition: all .4s ease-out;
 }
 
-.header:hover .about-btn {
-    top: -20px;
-    left: 5px;
-    opacity: .95;
+.header .menu a:hover {
+    color: #ffc02b;
 }
 
 .main {

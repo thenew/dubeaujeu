@@ -3,15 +3,13 @@ window.addEvent('domready',function(){
     // set delay in .box
     $$("[data-liffect] .box").each(function (el,i) {
         var delay = i*300-20;
-        el.set("style", "-webkit-animation-delay:" + delay + "ms;"
-            + "-moz-animation-delay:" + delay + "ms;"
-            + "-o-animation-delay:" + delay + "ms;"
-            + "animation-delay:" + delay + "ms;");
+        el.set("style", "-webkit-animation-delay:" + delay + "ms;" +
+            "animation-delay:" + delay + "ms;");
     });
 
     // mask content during loading assets and play on complete
-    if($('du-beau-jeu')){
-        var el = $('du-beau-jeu');
+    if($('js-illustrations-page')){
+        var el = $('js-illustrations-page');
         el.addClass('loading');
         var dbjThumbs = Asset.images(el.getElements('img').get('src'), {
             onComplete: function(){
@@ -22,18 +20,18 @@ window.addEvent('domready',function(){
                 });
                 el.addClass('loaded');
                 el.getElements('.boxes')[0].addClass('play');
-                var infiniteScroll = new InfiniteScroll('du-beau-jeu');
+                var infiniteScroll = new InfiniteScroll('js-illustrations-page');
             }
         });
     }
 
 
-    popinTrigger($$('.popin-trigger'));
+    // popinTrigger($$('.popin-trigger'));
 
     // $$('.fon-popin-trigger').each(function(el,i){
     //     var fonPopin = FonPopin(el);
     // });
 
-    heartLike($$('.heart'));
+    // heartLike($$('.heart'));
 
 });

@@ -17,6 +17,7 @@ wp-config.php
 *[Tt]humbs.db
 *.Trashes
 
+wp-content/w3tc-config/
 .htaccess
 fon_min.css
 xenon360/

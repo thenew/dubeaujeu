@@ -1,10 +1,12 @@
 <?php
 
-// Thumbnails : active theme support
+// active theme support
 add_action( 'after_setup_theme', 'fon_add_theme_support' );
 function fon_add_theme_support() {
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'menus' );
 }
+
 
 // Désactive les widgets par défaut dans l'admin Wordpress
 add_action( 'widgets_init', 'unregister_default_wp_widgets' );
@@ -27,13 +29,6 @@ function unregister_default_wp_widgets() {
 // Remove the admin bar from the front end
 // add_filter( 'show_admin_bar', '__return_false' );
 
-// Custom CSS for the login page
-function fon_login_enqueue() {
-    wp_enqueue_style('fon-login', ASSETS_URL.'/css-admin/wp-login.css', array(), '1', 'all');
-}
-add_action('login_enqueue_scripts', 'fon_login_enqueue');
-
-// Custom CSS for the login page
 function fon_admin_enqueue() {
     wp_enqueue_style('fon-admin', ASSETS_URL.'/css-admin/admin.css', array(), '1', 'all');
 }
@@ -54,8 +49,9 @@ define('DISALLOW_FILE_EDIT', true);
 
 // add_action('rewrite_rules_array', fon_set_permalink());
 
-add_action( 'admin_footer-post-new.php', 'fon_media_uploaded_default' );
-add_action( 'admin_footer-post.php', 'fon_media_uploaded_default' );
+// BUGGY change select option in scroll
+// add_action( 'admin_footer-post-new.php', 'fon_media_uploaded_default' );
+// add_action( 'admin_footer-post.php', 'fon_media_uploaded_default' );
 
 function fon_media_uploaded_default() { ?>
 <script type="text/javascript">

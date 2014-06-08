@@ -3,11 +3,13 @@
  * CONSTANTS
  */
 
-define('FONDATIONS_VERSION', '0.1');
+define('FONDATIONS_VERSION', '0.8');
+define('FONDATIONS_VERSION_DATE', '2014-06-08');
 define('TEMPLATE_URL',   get_bloginfo('template_directory')); // path with virtual hosts
 define('TEMPLATE_PATH',  get_template_directory()); // the server-side path to folder
 
 define('FON_PATH',       TEMPLATE_PATH.'/fon');
+define('FON_URL',       TEMPLATE_URL.'/fon');
 
 define('ASSETS_PATH',    TEMPLATE_PATH.'/assets');
 define('ASSETS_URL',     TEMPLATE_URL.'/assets');
@@ -21,9 +23,9 @@ define('LIB_URL',        TEMPLATE_URL.'/fon/lib');
 define('CLASSES_PATH',   TEMPLATE_PATH.'/fon/core/classes');
 define('CLASSES_URL',    TEMPLATE_URL.'/fon/core/classes');
 
-function fon_define_env_dev(){
-    $url_extension = pathinfo($_SERVER['HTTP_HOST'],PATHINFO_EXTENSION);
-    return (WP_DEBUG || $url_extension == "dev" || $url_extension == "local" || is_preview());
+function fon_define_env_dev() {
+    $url_extension = pathinfo( $_SERVER['HTTP_HOST'], PATHINFO_EXTENSION );
+    return ( WP_DEBUG || $url_extension == "dev" || $url_extension == "local" );
 }
 define('ENV_DEV', fon_define_env_dev());
 
@@ -33,9 +35,9 @@ define('ENV_DEV', fon_define_env_dev());
  */
 
 /* core */
-foreach (glob(FON_PATH.'/core/admin/*.php') as $file) { if(!is_dir($file)) require_once $file; }
 foreach (glob(FON_PATH.'/core/classes/*.php') as $file) { if(!is_dir($file)) require_once $file; }
-foreach (glob(FON_PATH.'/core/functions/*.php') as $file) { if(!is_dir($file)) require_once $file; }
+foreach (glob(FON_PATH.'/core/admin/*.php') as $file) { if(!is_dir($file)) require_once $file; }
+foreach (glob(FON_PATH.'/core/system/*.php') as $file) { if(!is_dir($file)) require_once $file; }
 
 /* settings */
 foreach (glob(FON_PATH.'/settings/*.php') as $file) { if(!is_dir($file)) require_once $file; }

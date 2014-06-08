@@ -31,9 +31,14 @@ class Custom_Post_Type extends Fon_Base_Class
     /* Method which registers the post type */
     public function register_post_type()
     {
-        //Capitilize the words and make it plural
-        $name   = ucwords(str_replace('_', ' ', $this->post_type_name));
-        $plural = $name . 's';
+
+        if( isset( $this->post_type_labels['singular_name'] ) && ! empty( $this->post_type_labels['singular_name'] ) ) {
+            $name = $this->post_type_labels['singular_name'];
+        } else {
+            // Capitilize the words
+            $name = ucwords( str_replace( '_', ' ', $this->post_type_name ) );
+        }
+        $plural = ( isset( $this->post_type_labels['name'] ) && ! empty( $this->post_type_labels['name'] ) ) ? $this->post_type_labels['name'] : $name . 's';
 
         // We set the default labels based on the post type name and plural. We overwrite them with the given labels.
         $labels = array_merge(
@@ -102,26 +107,32 @@ class Custom_Post_Type extends Fon_Base_Class
             if(!taxonomy_exists($taxonomy_name))
             {
                 /* Create taxonomy and attach it to the object type (post type) */
-                //Capitilize the words and make it plural
-                $name     = ucwords(str_replace('_', ' ', $name ));
-                $plural   = $name . 's';
+                if( isset( $taxonomy_labels['singular_name'] ) && ! empty( $taxonomy_labels['singular_name'] ) ) {
+                    $name = $taxonomy_labels['singular_name'];
+                } else {
+                    // Capitilize the words
+                    $name = ucwords( str_replace( '_', ' ', $name ) );
+                }
+
+                // and make it plural
+                $plural = ( isset( $taxonomy_labels['name'] ) && ! empty( $taxonomy_labels['name'] ) ) ? $taxonomy_labels['name'] : $name . 's';
 
                 // Default labels, overwrite them with the given labels.
                 $labels = array_merge(
 
                     // Default
                     array(
-                        'name'              => _x($plural, 'taxonomy general name' ),
-                        'singular_name'     => _x($name, 'taxonomy singular name' ),
-                        'search_items'      => __( 'Search ' . $plural ),
-                        'all_items'         => __( 'All ' . $plural ),
-                        'parent_item'       => __( 'Parent ' . $name ),
-                        'parent_item_colon' => __( 'Parent ' . $name . ':' ),
-                        'edit_item'         => __( 'Edit ' . $name ),
-                        'update_item'       => __( 'Update ' . $name ),
-                        'add_new_item'      => __( 'Add New ' . $name ),
-                        'new_item_name'     => __( 'New ' . $name . ' Name' ),
-                        'menu_name'         => __( $name ),
+                        'name'              => _x( $plural, 'taxonomy general name' ),
+                        'singular_name'     => _x( $name, 'taxonomy singular name' ),
+                        'search_items'      => __( 'Search' ) . ' ' . $plural,
+                        'all_items'         => __( 'All' ) . ' ' . $plural,
+                        'parent_item'       => __( 'Parent' ) . ' ' . $name,
+                        'parent_item_colon' => __( 'Parent' ) . ' ' . $name . ':',
+                        'edit_item'         => __( 'Edit' ) . ' ' . $name,
+                        'update_item'       => __( 'Update' ) . ' ' . $name,
+                        'add_new_item'      => __( 'Add New' ) . ' ' . $name,
+                        'new_item_name'     => __( 'New' ) . ' ' . $name . ' ' . __('Name' ),
+                        'menu_name'         => __( $plural ),
                     ),
 
                     // Given labels
@@ -134,12 +145,13 @@ class Custom_Post_Type extends Fon_Base_Class
 
                     // Default
                     array(
-                        'label'              => $plural,
+                        // 'label'              => $plural,
                         'labels'             => $labels,
                         'public'             => true,
                         'show_ui'            => true,
                         'hierarchical'       => true,
-                        'show_in_nav_menus'  => true,
+                        'show_in_nav_menus'  => false,
+                        'show_admin_column'  => true,
                         '_builtin'           => false,
                     ),
 
@@ -169,6 +181,9 @@ class Custom_Post_Type extends Fon_Base_Class
             }
 
         }
+
+
+
     }
 
 

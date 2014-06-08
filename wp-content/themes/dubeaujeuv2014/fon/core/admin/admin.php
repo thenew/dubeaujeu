@@ -1,4 +1,22 @@
 <?php
+
+add_action( 'admin_enqueue_scripts', 'fon_admin_menu_scripts' );
+function fon_admin_menu_scripts() {
+    wp_enqueue_script( 'packery', FON_URL.'/core/assets/js/packery.pkgd.min.js', '', '1.0', true );
+    wp_enqueue_script( 'fon_admin_menu', FON_URL.'/core/assets/js/admin.js', '', '1.0', true );
+}
+
+add_action( 'admin_enqueue_scripts', 'fon_admin_menu_styles' );
+function fon_admin_menu_styles() {
+    wp_enqueue_style( 'fon_admin_menu', FON_URL.'/core/assets/css/admin.css', '', '1.0' );
+}
+
+if(WP_DEBUG) {
+    add_action( 'admin_print_styles', function() {
+        echo '<style type="text/css">#adminmenu .dashicons-marker::before{color:#369492 !important;}</style>';
+    } );
+}
+
 /*
  * Menus & MetasBoxes
  * Supprime des menus inutiles dans l'admin Wordpress
@@ -46,4 +64,25 @@ function remove_box() {
    remove_meta_box('linkxfndiv','link','normal');
    remove_meta_box('linkadvanceddiv','link','normal');
 
+}
+
+function add_my_themes() {
+    wp_admin_css_color( 'fondations', 'Fondations', FON_URL.'/core/assets/css/fondations-theme.css', array( '#25282b', '#363b3f', '#F89C8F', '#369492' ) );
+}
+add_action( 'admin_init', 'add_my_themes', 1 );
+
+/**
+ * Columns
+ */
+
+add_filter('manage_posts_columns', 'fon_post_columns', 5);
+add_action('manage_posts_custom_column', 'fon_set_post_custom_columns', 5, 2);
+function fon_post_columns($defaults){
+    $defaults['fon_post_thumb'] = __('Thumb');
+    return $defaults;
+}
+function fon_set_post_custom_columns($column_name, $id){
+        if($column_name === 'fon_post_thumb'){
+        the_post_thumbnail( array(60,60) );
+    }
 }

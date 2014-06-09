@@ -15,29 +15,6 @@ function fon_menu_actions() {
     <div class="fon-body wrap" id="">
         <h2>Les Fondations</h2>
         <?php do_action( 'fon_menu_hook' ); ?>
-        <?php if(isset($_GET['applytag'])) {
-            $applytag_args = array(
-                'post_type'      => 'attachment',
-                'post_status' => 'any',
-                'date_query' => array(
-                    array(
-                        'before'    => array(
-                            'year'  => 2014,
-                            'month' => 5,
-                            'day'   => 28,
-                        ),
-                    ),
-                ),
-                'posts_per_page' => -1,
-            );
-            $applytag_query = new WP_Query($applytag_args);
-            if($applytag_query->have_posts()):
-                while($applytag_query->have_posts()):$applytag_query->the_post();
-                    wp_set_object_terms( get_the_id(), 'art', 'attachment_tag', true );
-                endwhile;
-            endif;
-            wp_reset_postdata();
-        } ?>
     </div>
     <?php
 }

@@ -1,10 +1,8 @@
     </div><!-- .main -->
-    <footer>
+    <footer class="footer">
+        <a href="<?php echo get_page_link( fon_get_post_by_postname('a-propos') ); ?>">?</a>
     </footer>
 
-    <!--[if lte IE 8]>
-        <script type="text/javascript" src="<?php echo ASSETS_URL; ?>/js/selectivizr.js"></script>
-    <![endif]-->
     <?php if(!WP_DEBUG && !is_preview()): ?>
         <script>
             var _gaq = _gaq || [];

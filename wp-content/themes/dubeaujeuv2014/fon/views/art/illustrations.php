@@ -15,11 +15,9 @@ $artworks_args = array(
             'terms' => 'art'
         )
     ),
-    // 'posts_per_page' => 10,
     'paged' => $paged
 );
 $artworks_query = new WP_Query($artworks_args);
-// print_r($artworks_query);
 $wides = 0;
 
 if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
@@ -29,42 +27,45 @@ if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>
 
     while($artworks_query->have_posts()): $artworks_query->the_post(); global $post;
 
-        // If attach to a game
-        // if( ! $post->post_parent || 'game' != get_post_type( $post->post_parent ) ) continue;
-
-        $img = wp_get_attachment_image_src(get_the_ID(), "full");
-        $ratio = $img[1]/$img[2];
+        $img = wp_get_attachment_image_src( get_the_ID(), 'full' );
+        $ratio = $img[1] / $img[2];
         // $is_wide = ($wides < 2 && $ratio > 1.9 && $img[1] > 660) ? true : false;
         $is_wide = false;
         if($is_wide) $wides++;
-        $size = ($is_wide) ? "medium" : "thumbnail";
+        $size = ($is_wide) ? 'medium' : 'thumbnail';
         $thumb = wp_get_attachment_image_src(get_the_ID(),$size);
         $thumb = $thumb[0];
 
         if($post->post_parent) {
-            $title = get_the_title($post->post_parent);
+            $game_title = get_the_title($post->post_parent);
+            $game_link = get_permalink( $post->post_parent );
 
-            if($title != get_the_title())
-                $title_alt = $title.' ✳ '.get_the_title();
+            if($game_title != get_the_title())
+                $title_alt = $game_title.' ✳ '.get_the_title();
             else
-                $title_alt = $title;
+                $title_alt = $game_title;
         } else {
-            $title = get_the_title();
-            $title_alt = $title;
+            $game_title = '';
+            $title_alt = $game_title;
         }
         $title_alt = strip_tags($title_alt);
         $title_alt = esc_attr($title_alt);
+
         ?>
         <div class="box">
             <div class="el">
-                <img class="" src="<?php echo $thumb; ?>" alt="artwork <?php echo $title_alt; ?>" />
+                <a href="<?php the_permalink(); ?>" target="_blank">
+                    <img src="<?php echo $thumb; ?>" alt="artwork <?php echo $title_alt; ?>" />
+                </a>
             </div>
-            <div class="caption">
-                <span class="post-title"><?php echo $title; ?></span>
-            </div>
+            <?php if(!empty($game_title)): ?>
+                <div class="caption">
+                    <span class="post-title"><a href="<?php echo $game_link; ?>"><?php echo $game_title; ?></a></span>
+                </div>
+            <?php endif; ?>
         </div>
-
         <?php
+
     endwhile;
 
 if(!isset($_GET['ajax']) || $_GET['ajax'] != "1"): ?>

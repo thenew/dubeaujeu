@@ -67,10 +67,37 @@ body {
     color: #ffc02b;
 }
 
+
+/* ----------------------------------------------------------
+   Header min
+   ------------------------------------------------------- */
+
+.single-attachment .header {
+    padding: 5px 0 0;
+}
+
+.single-attachment .logo-box {
+    margin-bottom: 5px;
+}
+
+.single-attachment .header .menu,
+.single-attachment .header .site-title {
+    display: none;
+}
+
+/* ----------------------------------------------------------
+   Footer
+   ------------------------------------------------------- */
+
+.footer {
+    padding: 15px 0 5px;
+    text-align: center;
+}
+
 .main {
     position: relative;
     text-align: center;
-    padding: 14px;
+    padding: 6px;
 }
 
 /* ----------------------------------------------------------

@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------
+   single-attachment
+   ------------------------------------------------------- */
+
+.single-attachment .attachment {
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+
+.is-zoomed {
+    max-width: none;
+    cursor: -webkit-zoom-out;
+    cursor: -moz-zoom-out;
+    cursor: zoom-out;
+}

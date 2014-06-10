@@ -24,14 +24,16 @@
 <body <?php body_class(); ?>>
     <header class="header">
         <div class="cf logo-box">
-            <div class="logo"></div>
-            <h1 class="site-title">Du Beau Jeu</h1>
+            <a href="<?php echo site_url(); ?>">
+                <div class="logo"></div>
+                <h1 class="site-title">Du Beau Jeu</h1>
+            </a>
         </div>
         <div>
             <div class="menu"><ul class="cf">
                 <li class="menu-item"><a href="" class="wip">Articles</a></li>
                 <li class="menu-item"><a href="" class="wip">Jeux</a></li>
-                <li class="menu-item"><a href="/illustrations/">Illustrations</a></li>
+                <li class="menu-item"><a href="<?php echo site_url( '/art/illustrations/' ); ?>">Illustrations</a></li>
             </ul></div>
         </div>
     </header>

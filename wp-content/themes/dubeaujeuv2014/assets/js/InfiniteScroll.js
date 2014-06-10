@@ -27,33 +27,24 @@ var InfiniteScroll = new Class({
     scroll: function() {
         var inf = this;
         var documentHeight, scrollY, clientHeight, elHeight;
-        // if no scroll
-        // if(documentHeight === clientHeight ) {
-        //     clearTimeout(inf.timeOut);
-        //     inf.timeOut = setTimeout(function() {
-        //         if(!inf.inProgress && inf.paged+1 < inf.maxPaged)
-        //             inf.loadMore();
-        //     }, 100);
-        // } else {
 
-            $(window).addEvent('scroll',function(e){
-                scrollY = window.getScroll().y;
-                documentHeight = document.body.offsetHeight;
-                clientHeight = document.documentElement.clientHeight;
-                elHeight = inf.element.getHeight();
-                // console.log('el '+ elHeight);
-                // console.log(scrollY+clientHeight);
+        $(window).addEvent('scroll',function(e){
+            scrollY = window.getScroll().y;
+            documentHeight = document.body.offsetHeight;
+            clientHeight = document.documentElement.clientHeight;
+            elHeight = inf.element.getHeight();
+            // console.log('el '+ elHeight);
+            // console.log(scrollY+clientHeight);
 
-                // if(scrollY >= documentHeight - clientHeight - 100){
-                if(elHeight - 200 <= scrollY+clientHeight){
-                    clearTimeout(inf.timeOut);
-                    inf.timeOut = setTimeout(function() {
-                        if(!inf.inProgress && inf.paged+1 < inf.maxPaged)
-                            inf.loadMore();
-                    }, 100);
-                }
-            });
-        // }
+            // if(scrollY >= documentHeight - clientHeight - 100){
+            if(elHeight - 600 <= scrollY+clientHeight){
+                clearTimeout(inf.timeOut);
+                inf.timeOut = setTimeout(function() {
+                    if(!inf.inProgress && inf.paged+1 < inf.maxPaged)
+                        inf.loadMore();
+                }, 100);
+            }
+        });
     },
     loadMore: function() {
         var inf = this;
@@ -110,7 +101,6 @@ var InfiniteScroll = new Class({
     loading: function() {
         var inf = this;
         inf.inProgress = true;
-        // inf.element.addClass("loading");
         $('main-loader').addClass("loading");
     },
     stopLoading: function() {
@@ -123,13 +113,11 @@ var InfiniteScroll = new Class({
     },
     liffect: function(el) {
         var inf = this;
-        el.getElements(".el").each(function (el,i) {
+        el.getElements('.box').each(function (el,i) {
             var delay = i*200;
-            el.set("style", "-webkit-animation-delay:" + delay + "ms;"
-                + "-moz-animation-delay:" + delay + "ms;"
-                + "-o-animation-delay:" + delay + "ms;"
-                + "animation-delay:" + delay + "ms;");
+            setTimeout(function() {
+                el.addClass('play');
+            }, delay);
         });
-        el.addClass('play');
     }
 });

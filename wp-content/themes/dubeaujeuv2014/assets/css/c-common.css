@@ -7,6 +7,22 @@ body {
     overflow-y: scroll;
 }
 
+/* ----------------------------------------------------------
+  Selection style
+---------------------------------------------------------- */
+
+::-moz-selection {
+    color: #000;
+    text-shadow: none;
+    background: #ffc02b;
+}
+
+::selection {
+    color: #000;
+    text-shadow: none;
+    background: #ffc02b;
+}
+
 /*  --------------------------------------------------
   = Messages
   -------------------------------------------------- */
@@ -100,23 +116,4 @@ a:hover {
 ::selection {
     color: #fff;
     background: #000;
-}
-
-/*  --------------------------------------------------
-  = Hacks
-  -------------------------------------------------- */
-
-/* Micro clearfix hack */
-.cf:before,
-.cf:after {
-    content: "";
-    display: table;
-}
-
-.cf:after {
-    clear: both;
-}
-
-.cf {
-    zoom: 1;
 }

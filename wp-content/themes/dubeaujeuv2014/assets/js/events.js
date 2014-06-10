@@ -1,12 +1,5 @@
 window.addEvent('domready',function(){
 
-    // set delay in .box
-    $$("[data-liffect] .box").each(function (el,i) {
-        var delay = i*300-20;
-        el.set("style", "-webkit-animation-delay:" + delay + "ms;" +
-            "animation-delay:" + delay + "ms;");
-    });
-
     // mask content during loading assets and play on complete
     if($('js-illustrations-page')){
         var el = $('js-illustrations-page');
@@ -19,19 +12,24 @@ window.addEvent('domready',function(){
                     itemSelector: '.box'
                 });
                 el.addClass('loaded');
-                el.getElements('.boxes')[0].addClass('play');
+                el.getElements('.boxes')[0].getElements('.box').each(function(el,i) {
+                    var delay = i*300-20;
+                    setTimeout(function() {
+                        el.addClass('play');
+                    }, delay);
+                });
                 var infiniteScroll = new InfiniteScroll('js-illustrations-page');
             }
         });
     }
 
+    // js-toggle-zoom
+    $$('.js-toggle-zoom').each(function(el) {
+        el.addEvent('click', function(e) {
+            e.preventDefault();
+            el.toggleClass('is-zoomed');
+        });
+    });
 
-    // popinTrigger($$('.popin-trigger'));
-
-    // $$('.fon-popin-trigger').each(function(el,i){
-    //     var fonPopin = FonPopin(el);
-    // });
-
-    // heartLike($$('.heart'));
 
 });

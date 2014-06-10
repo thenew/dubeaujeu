@@ -24,7 +24,7 @@ $attachment->add_taxonomy( 'attachment_tag',
 // Game
 $game = new Custom_Post_Type( 'Game',
     array(
-        'rewrite' => array( 'slug' => 'jeu' ),
+        'rewrite' => array( 'slug' => 'jeu-video' ),
         'menu_icon' => 'dashicons-art'
     ),
     array(

@@ -128,7 +128,7 @@
     animation-play-state: paused;
 }
 
-[data-liffect] .play .box {
+[data-liffect] .play.box {
     -webkit-animation-play-state: running;
     -moz-animation-play-state: running;
     -o-animation-play-state: running;

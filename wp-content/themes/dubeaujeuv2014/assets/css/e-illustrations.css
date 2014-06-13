@@ -56,7 +56,7 @@
     background-color: #485062;
     background-color: rgba(72, 80, 98, .8);
     line-height: 30px;
-    font-family: 'courier_prime', sans-serif;
+    font-family: monospace;
     color: #efefef;
     text-align: center;
     font-size: 12px;
@@ -75,6 +75,10 @@
     max-width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.box .caption .post-title a {
+    color: #efefef;
 }
 
 #js-illustrations-page .box img {

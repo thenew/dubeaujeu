@@ -57,6 +57,7 @@
     background-color: rgba(72, 80, 98, .8);
     line-height: 30px;
     font-family: monospace;
+    color: #efefef;
     text-align: center;
     font-size: 12px;
     -webkit-transition: opacity .2s ease-in-out;

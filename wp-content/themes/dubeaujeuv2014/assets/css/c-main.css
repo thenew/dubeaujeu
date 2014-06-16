@@ -72,14 +72,18 @@ body {
    Header min
    ------------------------------------------------------- */
 
+.single-game .header,
 .single-attachment .header {
     padding: 5px 0 0;
 }
 
+.single-game .logo-box,
 .single-attachment .logo-box {
     margin-bottom: 5px;
 }
 
+.single-game .header .menu,
+.single-game .header .site-title,
 .single-attachment .header .menu,
 .single-attachment .header .site-title {
     display: none;

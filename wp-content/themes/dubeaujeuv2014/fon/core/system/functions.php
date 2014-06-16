@@ -88,22 +88,52 @@ function fon_get_attachment($page_id, $format) {
     wp_reset_query();
 }
 
-function fon_get_attachments( $post_ids, $formats = array('thumbnail'), $exclude_ids = array() ) {
+function fon_get_attachments( $post_ids, $args ) {
     if ( ! $post_ids ) return;
     if ( ! is_array( $post_ids ) ) {
         $post_ids = array( $post_ids );
     }
 
+    // args
+    $formats = array();
+    $exclude_ids = array();
+    $attachment_tag = array();
+    if( isset($args['formats']) ) {
+        if(!is_array($args['formats'])) {
+            $args['formats'] = array($args['formats']);
+        }
+        $formats = $args['formats'];
+    }
+    if( isset($args['exclude_ids']) ) {
+        $exclude_ids = $args['exclude_ids'];
+    }
+    if( isset($args['attachment_tag']) ) {
+        $attachment_tag = $args['attachment_tag'];
+    }
+
     $thumbs = array();
 
-    $args = array(
+    $attachment_args = array(
         'post_type'      => 'attachment',
         'post_parent__in' => $post_ids,
-        'post__not_in' => $exclude_ids,
         'post_status' => 'any',
         'posts_per_page' => -1
     );
-    $query = new WP_Query($args);
+
+    if(!empty($exclude_ids)) {
+        $attachment_args['post__not_in'] = $exclude_ids;
+    }
+    if(!empty($attachment_tag)) {
+        $attachment_args['tax_query'] = array(
+            array(
+                'taxonomy' => 'attachment_tag',
+                'field' => 'slug',
+                'terms' => $attachment_tag
+            )
+        );
+    }
+
+    $query = new WP_Query($attachment_args);
     if($query->have_posts()): while($query->have_posts()):$query->the_post();
         $attachment_id = get_the_id();
 
@@ -127,9 +157,7 @@ function fon_get_attachments( $post_ids, $formats = array('thumbnail'), $exclude
                 'height' => $thumb[2]
             );
         }
-
         $thumbs[$attachment_id] = $thumb_array;
-
     endwhile; endif;
     wp_reset_postdata();
 

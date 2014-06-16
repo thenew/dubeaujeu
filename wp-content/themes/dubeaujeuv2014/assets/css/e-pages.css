@@ -14,3 +14,30 @@
     cursor: -moz-zoom-out;
     cursor: zoom-out;
 }
+
+/* ----------------------------------------------------------
+   content-single-game
+   ------------------------------------------------------- */
+
+.content-single-game {
+    position: relative;
+    min-height: 600px;
+}
+
+.content-single-game .bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.content-single-game .logo {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto 30px;
+}

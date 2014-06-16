@@ -33,7 +33,9 @@ function fon_attachment_custom_fields( $fields ) {
 
 if( function_exists("register_field_group") )
 {
-    define( 'ACF_LITE', true );
+    if(!ENV_DEV) {
+        define( 'ACF_LITE', true );
+    }
 
     register_field_group(array (
         'id' => 'acf_details',
@@ -148,6 +150,15 @@ if( function_exists("register_field_group") )
                 'maxlength' => '',
             ),
             array (
+                'key' => 'field_5394600b8beb6',
+                'label' => 'Date de sortie française',
+                'name' => 'release_date_fr',
+                'type' => 'date_picker',
+                'date_format' => 'yyyy-mm-dd',
+                'display_format' => 'dd/mm/yyyy',
+                'first_day' => 1,
+            ),
+            array (
                 'key' => 'field_53945fe48beb5',
                 'label' => 'Site officiel',
                 'name' => 'website',
@@ -169,15 +180,6 @@ if( function_exists("register_field_group") )
                 'maxlength' => '',
                 'rows' => '',
                 'formatting' => 'br',
-            ),
-            array (
-                'key' => 'field_5394600b8beb6',
-                'label' => 'Date de sortie française',
-                'name' => 'release_date_fr',
-                'type' => 'date_picker',
-                'date_format' => 'yyyy-mm-dd',
-                'display_format' => 'dd/mm/yyyy',
-                'first_day' => 1,
             ),
             array (
                 'key' => 'field_539460958beb7',

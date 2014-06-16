@@ -163,6 +163,10 @@ function fon_filou_parsing( $url = '', $args = array() ) {
                             <label class="label" for="tag-bg-<?php echo $imgs_count; ?>">Bg</label>
                         </div>
                         <div class="box">
+                            <input type="checkbox" name="filou_imgs_tag[]" value="cover" id="tag-bg-<?php echo $imgs_count; ?>" class="tag-checkbox" />
+                            <label class="label" for="tag-bg-<?php echo $imgs_count; ?>">Cover</label>
+                        </div>
+                        <div class="box">
                             <input type="checkbox" name="filou_imgs_tag[]" value="hors-jeu" id="tag-hors-jeu-<?php echo $imgs_count; ?>" class="tag-checkbox" />
                             <label class="label" for="tag-hors-jeu-<?php echo $imgs_count; ?>">H-jeu</label>
                         </div>

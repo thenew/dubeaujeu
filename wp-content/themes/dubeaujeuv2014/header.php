@@ -9,7 +9,7 @@
     <title><?php bloginfo('name'); ?></title>
     <meta name="viewport" content="width=690">
 
-    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/app-icons/favicon.png" />
+    <link rel="icon" href="<?php echo ASSETS_URL ?>/img/app-icons/favicon<?php if(WP_DEBUG) echo '-debug'; ?>.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
     <link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL ?>/img/app-icons/startup.png">

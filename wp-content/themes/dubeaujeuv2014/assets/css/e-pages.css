@@ -15,6 +15,19 @@
     cursor: zoom-out;
 }
 
+.content-single-attachment .attachments-list {
+    margin-top: 30px;
+}
+
+.content-single-attachment .attachments-list > .item {
+    display: block;
+    float: left;
+    max-width: 140px;
+    max-height: 80px;
+    height: auto;
+    overflow: hidden;
+}
+
 /* ----------------------------------------------------------
    content-single-game
    ------------------------------------------------------- */

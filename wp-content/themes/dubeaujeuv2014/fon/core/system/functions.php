@@ -91,7 +91,7 @@ function fon_get_attachment($page_id, $format) {
 function fon_get_attachments( $post_ids, $args ) {
     if ( ! $post_ids ) return;
     if ( ! is_array( $post_ids ) ) {
-        $post_ids = array( $post_ids );
+        $post_ids = array_map( 'intval', array( $post_ids ) );
     }
 
     // args
@@ -105,7 +105,7 @@ function fon_get_attachments( $post_ids, $args ) {
         $formats = $args['formats'];
     }
     if( isset($args['exclude_ids']) ) {
-        $exclude_ids = $args['exclude_ids'];
+        $exclude_ids = array_map( 'intval', array( $args['exclude_ids'] ) );
     }
     if( isset($args['attachment_tag']) ) {
         $attachment_tag = $args['attachment_tag'];
@@ -142,6 +142,7 @@ function fon_get_attachments( $post_ids, $args ) {
             $alt = get_the_title();
         }
         $thumb_array = array(
+            'id' => $attachment_id,
             'title' => get_the_title(),
             'alt' => $alt,
             'caption' => get_the_excerpt(),
@@ -267,7 +268,9 @@ function fon_get_post_by_postname( $post_name ) {
         $post = get_post( (int)$post_name );
     }
 
-    return $post;
+    if($post) {
+        return $post;
+    }
 }
 
 

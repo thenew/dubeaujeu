@@ -21,9 +21,13 @@ if( ! empty($attachment_logo) ) {
     <?php endif; ?>
     <?php if( isset($attachment_logo_src) ): ?>
         <div class="logo"><img src="<?php echo $attachment_logo_src; ?>" alt="Logo <?php the_title(); ?>" /></div>
-    <?php else: ?>
-    <div class="game-title"><?php the_title(); ?></div>
     <?php endif; ?>
+
+    <div class="game-card">
+        <div class="game-title"><?php the_title(); ?></div>
+
+    </div>
+
 </div>
 <?php
 get_footer();

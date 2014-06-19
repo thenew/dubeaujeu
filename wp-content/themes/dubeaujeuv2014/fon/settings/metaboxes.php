@@ -1,34 +1,5 @@
 <?php
 
-// Attachments custom fields
-add_action( 'fon_attachment_fields', 'fon_attachment_custom_fields' );
-function fon_attachment_custom_fields( $fields ) {
-
-    $custom_fields = array(
-        'credit_text' => array(
-            'label' => __('Crédit'),
-            'input' => 'text' // hidden, textarea or text
-            // 'helps' => __('The owner of the image.'),
-        ),
-        'credit_url' => array(
-            'label' => __('Crédit URL'),
-            'input' => 'url'
-        ),
-        'author_name' => array(
-            'label' => __('Auteur'),
-            'input' => 'text'
-        ),
-        'author_url' => array(
-            'label' => __('Auteur URL'),
-            'input' => 'url'
-        ),
-    );
-
-    $fields = array_merge( $fields, $custom_fields );
-    return $fields;
-}
-
-
 // ACF
 
 if( function_exists("register_field_group") )
@@ -121,6 +92,7 @@ if( function_exists("register_field_group") )
         ),
         'menu_order' => 0,
     ));
+
     register_field_group(array (
         'id' => 'acf_infos',
         'title' => 'Infos',
@@ -210,4 +182,68 @@ if( function_exists("register_field_group") )
         ),
         'menu_order' => 0,
     ));
+
+    register_field_group(array (
+        'id' => 'acf_credits',
+        'title' => 'Crédits',
+        'fields' => array (
+            array (
+                'key' => 'field_53a2a6ec4778f',
+                'label' => 'Crédit',
+                'name' => 'credit',
+                'type' => 'repeater',
+                'sub_fields' => array (
+                    array (
+                        'key' => 'field_53a2a772b5c5f',
+                        'label' => 'Label',
+                        'name' => 'label',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                    array (
+                        'key' => 'field_53a2a88e3b98a',
+                        'label' => 'URL',
+                        'name' => 'url',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'html',
+                        'maxlength' => '',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Ajouter',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'ef_media',
+                    'operator' => '==',
+                    'value' => 'all',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'default',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
 }

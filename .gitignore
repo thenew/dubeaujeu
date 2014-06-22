@@ -22,3 +22,7 @@ wp-content/w3tc-config/
 fon_min.css
 xenon360/
 wp-content/plugins/acf-repeater/
+wp-content/plugins/media-placeholders/
+wp-content/plugins/wordpress-importer/
+wp-content/languages/plugins/wordpress-importer*
+wp-content/uploads_preprod/

@@ -4,10 +4,9 @@
  *
  * import and handle medias from URL
  *
- * TODO
  * Module de pillage des images : depuis une URL lister toutes les <img>
  * (chercher si un lien les entourent pour chercher l'image en grande résolution),
- * cocher les images à importer, les renommer (pour SEO et cacher pillage) + associer à un post
+ * cocher les images à importer, les renommer (pour SEO et un pillage discret) + associer à un post
  *
  */
 
@@ -85,10 +84,12 @@ function fon_filou_parsing( $url = '', $args = array() ) {
         libxml_use_internal_errors( true );
         $dom->loadHTML( $html );
         $xpath = new DOMXPath( $dom );
-
         $nodes = $xpath->query( "//img[contains(@src, '.jpg') or contains(@src, '.jpeg') or contains(@src, '.png') or contains(@src, '.gif')]" );
+        $nodes = $xpath->query( "//img" );
 
+        $node_count = 0;
         foreach ($nodes as $node) {
+
             // get link wrapping img and check if its an img
             $href = $node->parentNode->getAttribute( 'href' );
             $href = rel2abs( $href, $url );
@@ -99,18 +100,32 @@ function fon_filou_parsing( $url = '', $args = array() ) {
             } else {
 
                 $src = $node->getAttribute( 'src' );
+                if(!$src) {
+                    $src = $node->getAttribute( 'data-src' );
+                }
                 $src = rel2abs( $src, $url );
                 if( ! in_array( $src, $imgs_url ) ) {
                     $imgs_url[] = $src;
                 }
-            }
-        }
 
-        set_time_limit(30);
+            }
+            if($node_count % 40 == 0) {
+                set_time_limit(30);
+            }
+            $node_count++;
+        }
 
         // check size
         foreach ($imgs_url as $url) {
-            if( $size_min ) {
+
+            $imgs[] = array(
+                'url' => $url,
+                'width' => '',
+                'height' => ''
+            );
+
+            // check size (very buggy and slow)
+            /*if( $size_min ) {
 
                 // Get dimensions
 
@@ -132,7 +147,7 @@ function fon_filou_parsing( $url = '', $args = array() ) {
                     'height' => ''
                 );
                 $imgs[] = $img_array;
-            }
+            }*/
         }
 
         asort($imgs);
@@ -248,21 +263,24 @@ function fon_filou_save() {
 
     set_time_limit(30);
 
-    // metas
-    $metas = array();
-
-    if ( isset( $_POST['filou_media_author_name'] ) && ! empty( $_POST['filou_media_author_name'] ) )
-        $metas['author_name'] = $_POST['filou_media_author_name'];
-    if ( isset( $_POST['filou_media_author_url'] ) && ! empty( $_POST['filou_media_author_url'] ) )
-        $metas['author_url'] = $_POST['filou_media_author_url'];
-
-
     $attachments_id = array();
     foreach ( $imgs as $key => $img_url ) {
         $title = ( $post_id ) ? get_the_title( $post_id ) : basename( $img_url );
-        $attachment_id = fon_upload_form_url( $img_url, $title, $post_id, $metas );
+        $attachment_id = fon_upload_form_url( $img_url, $title, $post_id );
         $attachments_id[] = $attachment_id;
 
+        // metas
+        if ( isset( $_POST['filou_media_author_name'] ) && ! empty( $_POST['filou_media_author_name'] ) && isset( $_POST['filou_media_author_url'] ) && ! empty( $_POST['filou_media_author_url'] ) ) {
+            $acf_field_key = "field_53a2a6ec4778f";
+            $acf_meta_value = get_field( $acf_field_key, $attachment_id );
+            $acf_meta_value[] = array(
+                "field_53a2a772b5c5f" => $_POST['filou_media_author_name'],
+                "field_53a2a88e3b98a" => $_POST['filou_media_author_url']
+            );
+            update_field( $acf_field_key, $acf_meta_value, $attachment_id );
+        }
+
+        // tags
         if( isset( $_POST['filou_imgs_tag'][$key] ) && ! empty( $_POST['filou_imgs_tag'][$key] ) ) {
             wp_set_object_terms( $attachment_id, $_POST['filou_imgs_tag'][$key], 'attachment_tag', true );
         }
@@ -270,7 +288,9 @@ function fon_filou_save() {
 
     if ( ! empty( $attachments_id ) ) { ?>
         <div class="updated"><ul>
-            <li>Jeu <a href="<?php echo get_admin_url() . 'post.php?post=' . $post_id . '&action=edit'; ?>"><?php echo get_the_title( $post_id ); ?></a></li>
+            <?php if($post_id) { ?>
+                <li>Jeu <a href="<?php echo get_admin_url() . 'post.php?post=' . $post_id . '&action=edit'; ?>"><?php echo get_the_title( $post_id ); ?></a></li>
+            <?php } ?>
             <?php foreach ($attachments_id as $id) { ?>
                 <li><a href="<?php echo get_admin_url() . 'post.php?post=' . $id . '&action=edit'; ?>"><?php echo get_the_title( $id ); ?></a></li>
             <?php } ?>
@@ -341,7 +361,7 @@ function fon_upload_form_url( $url, $title = '', $post_id = 0, $metas = array() 
 
 function rel2abs($rel, $base) {
     /* return if already absolute URL */
-    if (parse_url($rel, PHP_URL_SCHEME) != '') return $rel;
+    if (parse_url($rel, PHP_URL_SCHEME) != '' || substr($rel, 0, 2) == '//') return $rel;
 
     /* queries and anchors */
     if (isset($rel[0]) && ($rel[0]=='#' || $rel[0]=='?')) return $base.$rel;

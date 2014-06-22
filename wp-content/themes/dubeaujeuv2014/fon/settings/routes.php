@@ -11,7 +11,8 @@ foreach (glob(FON_PATH.'/views/*.php') as $file) {
 $fon_custom_routes = array(
     // URL => views
     'art/illustrations' => 'art/illustrations',
-    'art/videos' => 'art'
+    'art/videos' => 'art/videos',
+    'art/hors-jeu' => 'art/hors-jeu'
 );
 
 $fon_routes = $fon_views_routes + $fon_custom_routes;

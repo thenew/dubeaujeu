@@ -12,7 +12,7 @@ $artworks_args = array(
         array(
             'taxonomy' => 'attachment_tag',
             'field' => 'slug',
-            'terms' => 'art'
+            'terms' => 'hors-jeu'
         )
     ),
     'paged' => $paged

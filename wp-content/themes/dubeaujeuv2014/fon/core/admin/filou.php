@@ -226,11 +226,11 @@ function fon_filou_parsing( $url = '', $args = array() ) {
                 <td><input type="text" name="filou_post_title" id="filou_post_title" value="" /></td>
             </tr>
             <tr valign="top">
-                <th scope="row"><label for="filou_media_author_name">Auteur</label></th>
+                <th scope="row"><label for="filou_media_author_name">Crédit label</label></th>
                 <td><input type="text" name="filou_media_author_name" id="filou_media_author_name" value="" /></td>
             </tr>
             <tr valign="top">
-                <th scope="row"><label for="filou_media_author_url">Auteur URL</label></th>
+                <th scope="row"><label for="filou_media_author_url">Crédit URL</label></th>
                 <td><input type="text" name="filou_media_author_url" id="filou_media_author_url" value="" /></td>
             </tr>
         </tbody></table>

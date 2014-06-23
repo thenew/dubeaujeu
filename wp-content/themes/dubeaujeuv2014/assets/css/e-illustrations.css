@@ -22,6 +22,7 @@
     position: relative;
     z-index: 2;
     float: left;
+    width: 330px;
     padding: 0;
     margin: 0;
     opacity: 1;
@@ -86,6 +87,7 @@
     display: block;
     margin: 0;
     padding: 0;
+    min-width: 100%;
 }
 
 /* ----------------------------------------------------------

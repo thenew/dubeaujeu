@@ -63,3 +63,14 @@ $company = new Custom_Post_Type( 'Company',
 
 $company->add_taxonomy( 'role' );
 
+// Series
+$series = new Custom_Post_Type( 'Series',
+    array(
+        'menu_icon' => 'dashicons-list-view'
+    ),
+    array(
+        'name' => 'Séries',
+        'singular_name' => 'Série'
+    )
+);
+

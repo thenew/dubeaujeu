@@ -1,8 +1,3 @@
-    </div><!-- .main -->
-    <footer class="footer">
-        <a href="<?php echo get_page_link( fon_get_post_by_postname('a-propos') ); ?>">?</a>
-    </footer>
-
     <?php if(!WP_DEBUG && !is_preview()): ?>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

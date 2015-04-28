@@ -48,16 +48,16 @@ function fon_register_connections() {
             )
         ),
         array(
-            'name' => 'saga',
+            'name' => 'series_game',
             'from' => 'game',
-            'to' => 'game',
+            'to' => 'series',
             'reciprocal' => true,
-            'fields' => array(
-                'role' => array(
-                    'title' => 'Nom',
-                    'type' => 'text'
-                )
-            )
+        ),
+        array(
+            'name' => 'attachment_people',
+            'from' => 'attachment',
+            'to' => 'person',
+            'reciprocal' => true,
         )
     );
 

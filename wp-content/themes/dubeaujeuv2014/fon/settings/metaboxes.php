@@ -4,6 +4,9 @@
 
 if( function_exists("register_field_group") )
 {
+    if(ENV_DEV) {
+        return;
+    }
     if(!ENV_DEV) {
         define( 'ACF_LITE', true );
     }

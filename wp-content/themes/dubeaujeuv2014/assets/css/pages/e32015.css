@@ -1,26 +1,43 @@
+body,
+html {
+    height: 100%;
+}
+
 body {
     background: #FFDD18;
     text-align: center;
 }
 
-.handfont {
-    display: inline-block;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
+.e32015-page {
+    height: 100%;
 }
 
-.handfont path {
+.e32015-page .logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.e32015-page .handfont {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 50px auto auto auto;
+}
+
+.e32015-page .handfont path {
     fill: none;
     stroke: #FF0000;
-    stroke-width: 15px;
+    stroke-width: 15%;
 }
 
-.handfont .e3 path {
+.e32015-page .handfont .e3 path {
     stroke: #000;
 }
 
-.handfont ._2015 path {
+.e32015-page .handfont ._2015 path {
     stroke: #ED1D24;
-    stroke-width: 12px;
+    stroke-width: 10%;
 }
+

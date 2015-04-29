@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'neonoire';
+    src: url('../fonts/nn.woff2') format('woff2'),
+         url('../fonts/nn.woff') format('woff'),
+         url('../fonts/nn.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'desyrelregular';
+    src: url('../fonts/desyrel-webfont.ttf') format('truetype'),
+         url('../fonts/desyrel-webfont.svg#desyrelregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

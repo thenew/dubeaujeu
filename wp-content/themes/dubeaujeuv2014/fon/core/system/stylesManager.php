@@ -21,8 +21,9 @@ function fon_update_css(){
     $files = array();
     $dir = opendir(ASSETS_PATH.'/css/');
     while ( $file = readdir($dir) ) {
-        if($file != "." && $file != "..")
+        if( $file != "." && $file != ".." && strstr($file, '.css') !== false ) {
             $files[] = ASSETS_URL . '/css/' . $file;
+        }
     }
     closedir($dir);
     asort($files);
@@ -59,8 +60,9 @@ function fon_styles_init() {
         $files = array();
         $dir = opendir(ASSETS_PATH.'/css/');
         while ( $file = readdir($dir) ) {
-            if($file != "." && $file != "..")
+            if( $file != "." && $file != ".." && strstr($file, '.css') !== false ) {
                 $files[] = ASSETS_URL . '/css/' . $file;
+            }
         }
         closedir($dir);
         asort($files);

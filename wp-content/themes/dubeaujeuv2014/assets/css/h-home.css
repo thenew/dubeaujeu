@@ -1,4 +1,3 @@
-
 .landing {
     display: flex;
     flex-direction: column;
@@ -6,6 +5,24 @@
     justify-content: center;
     height: 100%;
     text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.landing .content {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    transition: opacity 2s ease-in-out;
+}
+
+.gameon .landing .content {
+    opacity: .1;
 }
 
 .landing .logo {
@@ -37,4 +54,41 @@
     font-size: 18px;
     line-height: 1.4;
     color: #485062;
+}
+
+.mobs-box {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: radial-gradient(rgba(222, 222, 222, 0), rgba(222, 222, 222, 0.8));
+}
+
+.mobs-box .counter {
+    margin: 10px;
+    color: #B61414;
+    font-size: 18px;
+}
+
+.mobs-box .mob {
+    width: 150px;
+    height: 150px;
+}
+
+.mobs-box .mob .hitbox {
+    display: block;
+    cursor: pointer;
+}
+
+.mobs-box .mob .line {
+    fill: none;
+    stroke: #ff931e;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    pointer-events: none;
 }

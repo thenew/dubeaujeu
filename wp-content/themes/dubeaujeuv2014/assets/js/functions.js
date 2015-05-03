@@ -1,4 +1,4 @@
-function popinTrigger(els) {
+/*function popinTrigger(els) {
     els.each(function(el,i){
         el.addEvent('click', function(e){
             var link = this;
@@ -101,4 +101,182 @@ function heartLike(els){
             }
         });
     });
+}
+*/
+
+function mobs() {
+    var mobsBox = document.querySelector('.mobs-box');
+    if(! mobsBox) return;
+
+    var container = mobsBox;
+    var mobModel = mobsBox.querySelector('.mob');
+    mobModel.style.display = 'none';
+
+    var delay = 1000;
+    var counter = 10;
+    var counterEl = document.createElement("div");
+    counterEl.classList.add("counter");
+    counterEl.textContent = counter;
+    container.appendChild(counterEl);
+
+    var bgColors = { start: "rgba(222, 222, 222, 0)", end: "rgba(222, 222, 222, 0.8)"};
+    var bgColorsRed = { start: "rgba(255, 192, 43, 0)", end: "rgba(255, 192, 43, 0.8)"};
+
+      function updateColor( el, tween, direction ) {
+            TweenMax.set(el, {
+                backgroundImage:"radial-gradient("+tween.target["start"]+", "+tween.target["end"]+")"
+            });
+      }
+
+      var bgGradientRed = TweenMax.to(bgColors, 4, {
+            colorProps:{start:bgColorsRed.start, end:bgColorsRed.end },
+            ease: Quint.easeInOut,
+            onUpdateParams:[ container, "{self}", "top"],
+            onUpdate: updateColor,
+            paused:true
+      });
+
+
+
+    var gameover = function() {
+        // tl.stop();
+        $('.mobs-box').trigger('gameover');
+        // container.trigger('gameover');
+    }
+
+    // var mobs = mobsBox.querySelectorAll('.mob');
+
+    // for(var i = 0; i < mobs.length; i++){
+        // var mob = mobs[i];
+
+    var pop = function() {
+
+        // update counter
+        if(counter > 0) {
+            counter--
+            counterEl.textContent = counter;
+        }
+
+        // accelerate delay
+        delay -= (delay/4);
+        // delay = Math.floor(delay);
+        console.log('delay : ' + delay);
+
+        var mob = mobModel.cloneNode(true);
+        var lines = mob.querySelectorAll('.line');
+        var circle = mob.querySelector('.circle');
+        var disc = mob.querySelector('.disc');
+        var hitbox = mob.querySelector('.hitbox');
+
+        container.appendChild(mob);
+
+        var topStart = getRandomInt(10, 90);
+        var leftStart = getRandomInt(10, 90);
+        var topEnd = topStart + getRandomInt(-10, 10);
+        var leftEnd = leftStart + getRandomInt(-10, 10);
+
+        TweenMax.set([lines], {
+          drawSVG: '-50% 0%'
+        })
+        TweenMax.set(mob, {
+            display: 'block',
+            position: 'absolute',
+            xPercent: '-50%',
+            yPercent: '-50%',
+            top: topStart+'%',
+            left: leftStart+'%'
+        })
+        var mobMove = TweenMax.to(mob, 2, {
+            top: topEnd+'%',
+            left: leftEnd+'%',
+            repeat: -1,
+            yoyo: true
+        });
+
+        mobMove.play();
+
+        var animSpeed = 2;
+        var tl = new TimelineMax({paused: true, yoyo:false});
+        tl.timeScale(animSpeed);
+
+        tl
+          .to(disc, 0.2, {
+            //scale:1.6,
+            attr:{'r': 4},
+            ease:Power2.easeOut
+          })
+            .add("boum")
+          .to(disc, 0.8, {
+            attr:{'r': 10},
+            ease:Power2.easeOut
+          })
+          .to(circle, 1, {
+            //scale:1.6,
+            attr:{'r': 25},
+            ease:Power2.easeOut,
+              alpha:0
+          }, '-=0.8')
+          .to(disc, 1, {
+            opacity:0,
+            ease:Power2.easeOut,
+          }, 'boum')
+          .to(lines, 2, {
+            drawSVG:'100% 150%',
+            ease:Power2.easeOut,
+            alpha:1
+          }, '-=1')
+          .to(lines, 1.6, {
+            alpha:0
+          }, '-=1');
+
+
+        hitbox.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            tl.play();
+
+            if(counter < 10) {
+                counter++;
+                counterEl.textContent = counter;
+            }
+
+            if( ! $('body').hasClass('gameon') ) {
+                $('body').addClass('gameon');
+            }
+
+        });
+
+        tl.eventCallback('onComplete', function(){
+            mob.parentNode.removeChild(mob);
+        });
+
+        $('.mobs-box').on('gameover', function(e) {
+            mobMove.pause();
+        })
+
+    }
+
+    var intervalID = window.setInterval(function() {
+
+        if(counter > 0) {
+
+            if(counter < 3) {
+                bgGradientRed.play();
+            } else {
+                bgGradientRed.reverse();
+            }
+
+            pop();
+
+        } else {
+            clearInterval(intervalID);
+            gameover();
+        }
+
+    }, delay);
+    pop();
+
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
 }

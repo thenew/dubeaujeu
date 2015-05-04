@@ -104,9 +104,15 @@ function heartLike(els){
 }
 */
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function mobs() {
     var mobsBox = document.querySelector('.mobs-box');
     if(! mobsBox) return;
+
+    var gameOn = true;
 
     var container = mobsBox;
     var mobModel = mobsBox.querySelector('.mob');
@@ -140,6 +146,10 @@ function mobs() {
 
     var gameover = function() {
         // tl.stop();
+        gameOn = false;
+        $('body')
+            .removeClass('gameon')
+            .addClass('gameover');
         $('.mobs-box').trigger('gameover');
         // container.trigger('gameover');
     }
@@ -159,10 +169,11 @@ function mobs() {
 
         // accelerate delay
         delay -= (delay/4);
-        // delay = Math.floor(delay);
+        delay = Math.floor(delay);
         console.log('delay : ' + delay);
 
         var mob = mobModel.cloneNode(true);
+        var mobAlive = true;
         var lines = mob.querySelectorAll('.line');
         var circle = mob.querySelector('.circle');
         var disc = mob.querySelector('.disc');
@@ -186,7 +197,7 @@ function mobs() {
             top: topStart+'%',
             left: leftStart+'%'
         })
-        var mobMove = TweenMax.to(mob, 2, {
+        var mobMove = TweenMax.to(mob, 4, {
             top: topEnd+'%',
             left: leftEnd+'%',
             repeat: -1,
@@ -195,8 +206,8 @@ function mobs() {
 
         mobMove.play();
 
-        var animSpeed = 2;
         var tl = new TimelineMax({paused: true, yoyo:false});
+        var animSpeed = 2;
         tl.timeScale(animSpeed);
 
         tl
@@ -230,20 +241,26 @@ function mobs() {
           }, '-=1');
 
 
-        hitbox.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            tl.play();
 
-            if(counter < 10) {
-                counter++;
-                counterEl.textContent = counter;
+        var kill = function(event) {
+            event.preventDefault();
+            if(mobAlive && gameOn) {
+                mobMove.pause();
+                tl.play();
+
+                if(counter < 10) {
+                    counter++;
+                    counterEl.textContent = counter;
+                }
+
+                if( ! $('body').hasClass('gameon') ) {
+                    $('body').addClass('gameon');
+                }
+                mobAlive = false;
             }
-
-            if( ! $('body').hasClass('gameon') ) {
-                $('body').addClass('gameon');
-            }
-
-        });
+        }
+        // hitbox.addEventListener('mousedown', function(event) { kill(event) });
+        hitbox.addEventListener('mouseover', function(event) { kill(event) });
 
         tl.eventCallback('onComplete', function(){
             mob.parentNode.removeChild(mob);
@@ -275,8 +292,4 @@ function mobs() {
     }, delay);
     pop();
 
-}
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
 }

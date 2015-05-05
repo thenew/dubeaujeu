@@ -113,3 +113,6 @@
     stroke-miterlimit: 10;
     pointer-events: none;
 }
+
+.gameover .mobs-box .mob {
+}

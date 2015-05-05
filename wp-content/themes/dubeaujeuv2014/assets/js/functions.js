@@ -257,6 +257,8 @@ function mobs() {
 
         var kill = function(event) {
             event.preventDefault();
+            // mob.css('pointer-events', 'none');
+            mob.style.pointerEvents = 'none';
             if(mobAlive && gameOn) {
                 mobMove.pause();
                 tl.play();
@@ -282,6 +284,11 @@ function mobs() {
 
         $('.mobs-box').on('gameover', function(e) {
             mobMove.pause();
+
+            TweenMax.to('.mob', 1, {
+                opacity: 0,
+                ease:Power2.easeOut,
+            });
         });
 
     }

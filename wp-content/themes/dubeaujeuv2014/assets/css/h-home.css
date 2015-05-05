@@ -68,10 +68,31 @@
     background-image: radial-gradient(rgba(222, 222, 222, 0), rgba(222, 222, 222, 0.8));
 }
 
+.mobs-box .bar {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #FFC02B;
+}
+
 .mobs-box .counter {
-    margin: 10px;
-    color: #B61414;
-    font-size: 18px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-family: 'kelson';
+    font-size: 500px;
+    font-size: 90vh;
+    color: #020202;
+    text-align: right;
+    line-height: 0.6;
+    opacity: 0;
+}
+
+.gameon .mobs-box .counter {
+    opacity: .2;
 }
 
 .mobs-box .mob {

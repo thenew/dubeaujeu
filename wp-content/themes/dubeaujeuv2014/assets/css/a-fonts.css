@@ -17,24 +17,24 @@
 /* Kelson */
 
 @font-face {
-    font-family: 'kelson_sansregular';
-    src: url("kelson_sans_regular.woff2") format("woff2"), url("kelson_sans_regular.woff") format("woff"), url("kelson_sans_regular.ttf") format("truetype");
+    font-family: 'kelson';
+    src: url("../fonts/kelson/kelson_sans_regular.woff2") format("woff2"), url("../fonts/kelson/kelson_sans_regular.woff") format("woff"), url("../fonts/kelson/kelson_sans_regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 
 @font-face {
-    font-family: 'kelson_sansbold';
-    src: url("kelson_sans_bold.woff2") format("woff2"), url("kelson_sans_bold.woff") format("woff"), url("kelson_sans_bold.ttf") format("truetype");
-    font-weight: normal;
+    font-family: 'kelson';
+    src: url("../fonts/kelson/kelson_sans_bold.woff2") format("woff2"), url("../fonts/kelson/kelson_sans_bold.woff") format("woff"), url("../fonts/kelson/kelson_sans_bold.ttf") format("truetype");
+    font-weight: 700;
     font-style: normal;
 }
 
 
 @font-face {
-    font-family: 'kelson_sanslight';
-    src: url("kelson_sans_light.woff2") format("woff2"), url("kelson_sans_light.woff") format("woff"), url("kelson_sans_light.ttf") format("truetype");
-    font-weight: normal;
+    font-family: 'kelson';
+    src: url("../fonts/kelson/kelson_sans_light.woff2") format("woff2"), url("../fonts/kelson/kelson_sans_light.woff") format("woff"), url("../fonts/kelson/kelson_sans_light.ttf") format("truetype");
+    font-weight: 100;
     font-style: normal;
 }

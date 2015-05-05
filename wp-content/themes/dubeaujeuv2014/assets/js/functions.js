@@ -113,36 +113,45 @@ function mobs() {
     if(! mobsBox) return;
 
     var gameOn = true;
+    var intervalID = false;
 
     var container = mobsBox;
     var mobModel = mobsBox.querySelector('.mob');
     mobModel.style.display = 'none';
 
     var delay = 1000;
-    var counter = 10;
-    var counterEl = document.createElement("div");
-    counterEl.classList.add("counter");
+    var counter = 11;
+    var counterEl = mobsBox.querySelector(".counter");
     counterEl.textContent = counter;
-    container.appendChild(counterEl);
 
-    var bgColors = { start: "rgba(222, 222, 222, 0)", end: "rgba(222, 222, 222, 0.8)"};
-    var bgColorsRed = { start: "rgba(255, 192, 43, 0)", end: "rgba(255, 192, 43, 0.8)"};
+    var barEl = mobsBox.querySelector(".bar");
 
-      function updateColor( el, tween, direction ) {
-            TweenMax.set(el, {
-                backgroundImage:"radial-gradient("+tween.target["start"]+", "+tween.target["end"]+")"
-            });
-      }
+    // var bgColors = { start: "rgba(222, 222, 222, 0)", end: "rgba(222, 222, 222, 0.8)"};
+    // var bgColorsRed = { start: "rgba(255, 192, 43, 0)", end: "rgba(255, 192, 43, 0.8)"};
 
-      var bgGradientRed = TweenMax.to(bgColors, 4, {
-            colorProps:{start:bgColorsRed.start, end:bgColorsRed.end },
-            ease: Quint.easeInOut,
-            onUpdateParams:[ container, "{self}", "top"],
-            onUpdate: updateColor,
-            paused:true
-      });
+    //   function updateColor( el, tween, direction ) {
+    //         TweenMax.set(el, {
+    //             backgroundImage:"radial-gradient("+tween.target["start"]+", "+tween.target["end"]+")"
+    //         });
+    //   }
+
+      // var bgGradientRed = TweenMax.to(bgColors, 4, {
+      //       colorProps:{start:bgColorsRed.start, end:bgColorsRed.end },
+      //       ease: Quint.easeInOut,
+      //       onUpdateParams:[ container, "{self}", "top"],
+      //       onUpdate: updateColor,
+      //       paused:true
+      // });
 
 
+    var counterUpdate = function() {
+        counterEl.textContent = counter;
+
+        TweenMax.to(barEl, 2, {
+            height: (10 - counter) * 10 + '%',
+            ease:Power2.easeOut,
+        });
+    }
 
     var gameover = function() {
         // tl.stop();
@@ -163,8 +172,8 @@ function mobs() {
 
         // update counter
         if(counter > 0) {
-            counter--
-            counterEl.textContent = counter;
+            counter--;
+            counterUpdate();
         }
 
         // accelerate delay
@@ -195,13 +204,17 @@ function mobs() {
             xPercent: '-50%',
             yPercent: '-50%',
             top: topStart+'%',
-            left: leftStart+'%'
+            left: leftStart+'%',
+            opacity: 0
         })
         var mobMove = TweenMax.to(mob, 4, {
             top: topEnd+'%',
             left: leftEnd+'%',
             repeat: -1,
             yoyo: true
+        });
+        TweenMax.to(mob, 1, {
+            opacity: 1,
         });
 
         mobMove.play();
@@ -247,10 +260,11 @@ function mobs() {
             if(mobAlive && gameOn) {
                 mobMove.pause();
                 tl.play();
+                $('.mobs-box').trigger('kill');
 
                 if(counter < 10) {
                     counter++;
-                    counterEl.textContent = counter;
+                    counterUpdate();
                 }
 
                 if( ! $('body').hasClass('gameon') ) {
@@ -268,28 +282,35 @@ function mobs() {
 
         $('.mobs-box').on('gameover', function(e) {
             mobMove.pause();
-        })
+        });
 
     }
 
-    var intervalID = window.setInterval(function() {
+    $('.mobs-box').on('kill', function(e) {
+        if(intervalID !== false) return;
 
-        if(counter > 0) {
+        intervalID = window.setInterval(function() {
 
-            if(counter < 3) {
-                bgGradientRed.play();
+            if(counter > 0) {
+
+                if(counter < 3) {
+                    // bgGradientRed.play();
+                } else {
+                    // bgGradientRed.reverse();
+                }
+
+                pop();
+
             } else {
-                bgGradientRed.reverse();
+                clearInterval(intervalID);
+                gameover();
             }
 
-            pop();
+        }, delay);
 
-        } else {
-            clearInterval(intervalID);
-            gameover();
-        }
+    })
 
-    }, delay);
     pop();
+
 
 }

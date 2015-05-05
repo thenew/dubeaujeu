@@ -119,7 +119,6 @@ function mobs() {
     var mobModel = mobsBox.querySelector('.mob');
     mobModel.style.display = 'none';
 
-    var delay = 1000;
     var counter = 11;
     var counterEl = mobsBox.querySelector(".counter");
     counterEl.textContent = counter;
@@ -177,9 +176,9 @@ function mobs() {
         }
 
         // accelerate delay
-        delay -= (delay/4);
+/*        delay -= (delay/4);
         delay = Math.floor(delay);
-        console.log('delay : ' + delay);
+        console.log('delay : ' + delay);*/
 
         var mob = mobModel.cloneNode(true);
         var mobAlive = true;
@@ -264,7 +263,7 @@ function mobs() {
                 tl.play();
                 $('.mobs-box').trigger('kill');
 
-                if(counter < 10) {
+                if(counter < 9) {
                     counter++;
                     counterUpdate();
                 }
@@ -293,27 +292,29 @@ function mobs() {
 
     }
 
+    var delay = 1000;
+
+    var update = function() {
+        clearInterval(intervalID);
+        delay -= (delay/50);
+        delay = Math.floor(delay);
+        console.log('delay : ', delay);
+
+        if(counter > 0) {
+            pop();
+            intervalID = setInterval(update, delay);
+        } else {
+            gameover();
+        }
+
+    }
+
     $('.mobs-box').on('kill', function(e) {
         if(intervalID !== false) return;
 
-        intervalID = window.setInterval(function() {
-
-            if(counter > 0) {
-
-                if(counter < 3) {
-                    // bgGradientRed.play();
-                } else {
-                    // bgGradientRed.reverse();
-                }
-
-                pop();
-
-            } else {
-                clearInterval(intervalID);
-                gameover();
-            }
-
-        }, delay);
+        update();
+/*        intervalID = window.setInterval(function() {
+        }, delay);*/
 
     })
 

@@ -1,3 +1,8 @@
+function is_touch_device() {
+    return ( ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch );
+};
+
+
 /*function popinTrigger(els) {
     els.each(function(el,i){
         el.addEvent('click', function(e){
@@ -119,11 +124,19 @@ function mobs() {
     var mobModel = mobsBox.querySelector('.mob');
     mobModel.style.display = 'none';
 
-    var counter = 10;
+    var counterInit = 8;
+    var counter = counterInit;
     var counterEl = mobsBox.querySelector(".counter");
     counterEl.textContent = counter;
 
     var barEl = mobsBox.querySelector(".bar");
+
+    var intro = document.querySelector('.content .intro');
+    TweenMax.set(intro, {
+        'opacity': 0,
+        'height': 0
+    });
+
 
     // var bgColors = { start: "rgba(222, 222, 222, 0)", end: "rgba(222, 222, 222, 0.8)"};
     // var bgColorsRed = { start: "rgba(255, 192, 43, 0)", end: "rgba(255, 192, 43, 0.8)"};
@@ -149,7 +162,7 @@ function mobs() {
         }
 
         TweenMax.to(barEl, 2, {
-            height: (10 - counter) * 10 + '%',
+            height: (100/counterInit) * (counterInit - counter) + '%',
             ease:Power2.easeOut,
         });
     }
@@ -163,6 +176,17 @@ function mobs() {
             .addClass('gameover');
         $('.mobs-box').trigger('gameover');
         // container.trigger('gameover');
+
+        TweenMax.set(intro, {
+            height:'auto',
+            opacity: 1
+        });
+        TweenMax.from(intro, 1, {
+            height: 0,
+            opacity: 0,
+            ease: Power2.easeOut,
+            delay: 1.5
+        });
     }
 
     // var mobs = mobsBox.querySelectorAll('.mob');

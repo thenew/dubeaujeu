@@ -118,7 +118,7 @@ function mobs() {
     if(! mobsBox) return;
 
     var gameOn = true;
-    var intervalID = false;
+    var intervalId = false;
 
     var container = mobsBox;
     var mobModel = mobsBox.querySelector('.mob');
@@ -137,6 +137,14 @@ function mobs() {
         'height': 0
     });
 
+    var chronoId = false;
+    var chrono = 0;
+    var chronoEl = mobsBox.querySelector(".chrono");
+    chronoEl.textContent = chrono;
+    var setTime = function() {
+        chrono += 10;
+        chronoEl.textContent = chrono;
+    }
 
     // var bgColors = { start: "rgba(222, 222, 222, 0)", end: "rgba(222, 222, 222, 0.8)"};
     // var bgColorsRed = { start: "rgba(255, 192, 43, 0)", end: "rgba(255, 192, 43, 0.8)"};
@@ -171,6 +179,7 @@ function mobs() {
         // tl.stop();
         counterUpdate();
         gameOn = false;
+        clearInterval(chronoId);
         $('body')
             .removeClass('gameon')
             .addClass('gameover');
@@ -317,8 +326,8 @@ function mobs() {
     var delay = 1000;
 
     var update = function() {
-        clearInterval(intervalID);
-        delay -= (delay/75);
+        clearInterval(intervalId);
+        delay -= (delay/20);
         delay = Math.floor(delay);
         console.log('delay : ', delay);
 
@@ -328,23 +337,26 @@ function mobs() {
 
         if(counter > 0) {
             pop();
-            intervalID = setInterval(update, delay);
+            intervalId = setInterval(update, delay);
         } else {
             gameover();
         }
 
     }
 
+    // first kill = start game
     $('.mobs-box').on('kill', function(e) {
-        if(intervalID !== false) return;
+        if(intervalId !== false) return;
 
         update();
-/*        intervalID = window.setInterval(function() {
+        // start chrono
+        chronoId = setInterval(setTime, 10);
+
+/*        intervalId = window.setInterval(function() {
         }, delay);*/
 
     })
 
     pop();
-
 
 }

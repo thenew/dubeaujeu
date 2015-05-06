@@ -27,6 +27,10 @@
     opacity: .1;
 }
 
+.gameover .landing .content {
+    pointer-events: auto;
+}
+
 .landing .logo {
     display: flex;
     flex-direction: row;
@@ -51,12 +55,46 @@
 }
 
 .landing .intro a {
+    position: relative;
+    display: inline-block;
+    padding: 0 2px;
     text-decoration: none;
-    color: #212126;
+    color: inherit;
 }
 
-.landing .intro a:hover {
+.landing .intro a:before,
+.landing .intro a:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    display: block;
+    height: 1px;
+    background-color: #212126;
 }
+
+.landing .intro a:before {
+    left: 0;
+    width: 0;
+    transition: width .35s ease-in-out;
+}
+
+.landing .intro a:after {
+    right: 0;
+    width: 100%;
+    transition: width .35s ease-in-out .15s;
+}
+
+.landing .intro a:hover:before {
+    width: 100%;
+    transition: width .35s ease-in-out .15s;
+}
+
+.landing .intro a:hover:after {
+    width: 0;
+    transition: width .35s ease-in-out;
+}
+
+.landing .intro a:hover {}
 
 .mobs-box {
     position: fixed;
@@ -91,10 +129,36 @@
     text-align: right;
     line-height: 0.6;
     opacity: 0;
+    transition: opacity .2s;
 }
 
 .gameon .mobs-box .counter {
     opacity: .2;
+}
+
+.mobs-box .chrono {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    font-family: 'kelson', Impact, sans-serif;
+    font-size: 18px;
+    color: #020202;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.gameon .mobs-box .chrono {
+    opacity: .4;
+}
+
+.gameover .mobs-box .chrono {
+    opacity: 1;
 }
 
 .mobs-box .mob {

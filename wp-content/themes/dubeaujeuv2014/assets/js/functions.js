@@ -119,7 +119,7 @@ function mobs() {
     var mobModel = mobsBox.querySelector('.mob');
     mobModel.style.display = 'none';
 
-    var counter = 11;
+    var counter = 10;
     var counterEl = mobsBox.querySelector(".counter");
     counterEl.textContent = counter;
 
@@ -144,7 +144,9 @@ function mobs() {
 
 
     var counterUpdate = function() {
-        counterEl.textContent = counter;
+        if(counter) {
+            counterEl.textContent = counter;
+        }
 
         TweenMax.to(barEl, 2, {
             height: (10 - counter) * 10 + '%',
@@ -154,6 +156,7 @@ function mobs() {
 
     var gameover = function() {
         // tl.stop();
+        counterUpdate();
         gameOn = false;
         $('body')
             .removeClass('gameon')
@@ -169,11 +172,6 @@ function mobs() {
 
     var pop = function() {
 
-        // update counter
-        if(counter > 0) {
-            counter--;
-            counterUpdate();
-        }
 
         // accelerate delay
 /*        delay -= (delay/4);
@@ -296,9 +294,13 @@ function mobs() {
 
     var update = function() {
         clearInterval(intervalID);
-        delay -= (delay/50);
+        delay -= (delay/75);
         delay = Math.floor(delay);
         console.log('delay : ', delay);
+
+        // update counter
+        counter--;
+        counterUpdate();
 
         if(counter > 0) {
             pop();

@@ -1,24 +1,3 @@
-<?php
-
-// CSS
-
-function fon_styles_e32015() {
-    wp_enqueue_style( 'e32015', ASSETS_URL.'/css/pages/e32015.css' );
-}
-add_action( 'wp_enqueue_scripts', 'fon_styles_e32015' );
-
-// VIEW
-
-get_header();
-?>
-<div class="e32015-page">
-    <div class="logo-box">
-        <?php require_once TEMPLATEPATH.'/assets/img/e32015/logo.svg'; ?>
-    </div>
-</div>
-
-<script>
-
 jQuery(window).load(function(e){
 
     var svg = jQuery('svg');
@@ -58,7 +37,3 @@ jQuery(window).load(function(e){
     });
 
 });
-</script>
-<?php
-
-get_footer();

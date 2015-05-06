@@ -13,7 +13,7 @@ $fon_custom_routes = array(
     // 'art/illustrations' => 'art/illustrations',
     // 'art/videos' => 'art/videos',
     // 'art/hors-jeu' => 'art/hors-jeu'
-    'e32015' => 'views/e32015'
+    // 'e32015' => 'views/e32015'
 );
 
 // $fon_routes = $fon_views_routes + $fon_custom_routes;

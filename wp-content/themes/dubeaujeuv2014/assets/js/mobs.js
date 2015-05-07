@@ -184,7 +184,13 @@ function mobs() {
 
     var update = function() {
         clearInterval(intervalId);
-        delay -= (delay/20);
+        if(delay <= 400) {
+            delay -= 5;
+        } else if(delay <= 600) {
+            delay -= 10;
+        } else {
+            delay -= (delay/20);
+        }
         delay = Math.floor(delay);
         console.log('delay : ', delay);
 

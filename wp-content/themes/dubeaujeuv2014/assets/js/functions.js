@@ -2,6 +2,10 @@ function is_touch_device() {
     return ( ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch );
 };
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 
 /*function popinTrigger(els) {
     els.each(function(el,i){
@@ -108,7 +112,3 @@ function heartLike(els){
     });
 }
 */
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}

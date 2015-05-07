@@ -1,10 +1,6 @@
-.landing {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
+
+.gameon {
+    cursor: crosshair;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -13,6 +9,15 @@
     user-select: none;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
 }
 
 .js .landing {

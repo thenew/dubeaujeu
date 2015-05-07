@@ -15,6 +15,15 @@
     touch-action: manipulation;
 }
 
+.js .landing {
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.js.load .landing {
+    opacity: 1;
+}
+
 .landing .content {
     position: relative;
     z-index: 2;
@@ -46,12 +55,26 @@
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .landing .logo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
 .landing .intro {
     max-width: 600px;
+    padding: 0 50px;
     font-family: 'kelson', Impact, sans-serif;
     font-size: 15px;
     line-height: 1.6;
     color: #212126;
+}
+
+@media (max-width: 768px) {
+    .landing .intro {
+        font-size: 13px;
+    }
 }
 
 .landing .intro a {
@@ -151,6 +174,10 @@
     letter-spacing: 1px;
     opacity: 0;
     transition: opacity .2s;
+}
+
+.mobs-box .chrono .currency {
+    font-family: Tahoma, Verdana, sans-serif;
 }
 
 .gameon .mobs-box .chrono {

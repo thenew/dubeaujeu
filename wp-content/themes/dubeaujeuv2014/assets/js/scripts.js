@@ -1,7 +1,5 @@
 jQuery(window).load(function(e){
 
-    mobs();
-
     // mask content during loading assets and play on complete
 /*    if($('js-illustrations-page')){
         var el = $('js-illustrations-page');

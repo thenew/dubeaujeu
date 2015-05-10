@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background: #FFDD18;
+    /*background: #FFDD18;*/
     text-align: center;
 }
 
@@ -14,9 +14,9 @@ body {
 
 .e32015-page .logo-box {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100%;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 .e32015-page .handfont {
@@ -41,3 +41,83 @@ body {
     stroke-width: 10%;
 }
 
+/* Planning */
+
+.e32015-planning {
+    width: 500px;
+    margin: 0 auto 60px;
+}
+
+.e32015-planning .day {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.e32015-planning .date {
+    width: 60px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.e32015-planning .date .day {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FF0000;
+}
+
+.e32015-planning .date .month {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.e32015-planning .items {
+    flex-grow: 1;
+    padding: 5px 10px;
+    /*border: 1px solid #ccc;*/
+}
+
+.e32015-planning .item {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.e32015-planning .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.e32015-planning .hours {
+    font-size: 14px;
+}
+
+.e32015-planning .link {
+    font-size: 14px;
+    text-decoration: none;
+    color: #ed1d24;
+    margin-top: 5px;
+}
+
+.e32015-planning .link:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    display: block;
+    height: 1px;
+    background-color: #ed1d24;
+}
+
+.e32015-planning .nc {
+    margin-top: 20px;
+    opacity: .8;
+}
+
+.e32015-planning .nc .items {
+    margin-left: 70px;
+}

@@ -4,15 +4,14 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <title><?php wp_title(); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="<?php echo ASSETS_URL ?>/img/app-icons/favicon<?php if(WP_DEBUG) echo '-debug'; ?>.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-144.png" />
-    <link rel="apple-touch-startup-image" href="<?php echo ASSETS_URL ?>/img/app-icons/startup.png">
-    <link rel="logo" type="image/png" href="<?php echo ASSETS_URL ?>/img/app-icons/logo.png"/>
+    <link rel="icon" sizes="114x114" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-114.png" />
+    <link rel="icon" sizes="512x512" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-512.png" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content=" black-translucent" />
-
+    <link rel="apple-touch-icon-precomposed" href="<?php echo ASSETS_URL ?>/img/app-icons/icon-512.png">
+    <meta name="theme-color" content="#ffffff">
     <?php // include TEMPLATEPATH . '/tpl/metas/tpl_metas.php'; ?>
     <?php wp_head(); ?>
 </head>

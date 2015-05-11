@@ -1,8 +1,7 @@
 <?php
-get_header();
-?>
-404
-<?php
+wp_redirect(site_url());
+die;
+// get_header();
 /*$q_args = array(
     'post_type'      => 'attachment',
     'post_status'    => 'any',

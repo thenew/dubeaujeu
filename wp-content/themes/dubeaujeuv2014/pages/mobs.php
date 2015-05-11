@@ -1,4 +1,4 @@
-<?php
+<?php /* Template Name: mobs */
 
 function fon_scripts_mobs() { wp_enqueue_script( 'mobs', ASSETS_URL.'/js/mobs.js', '', '1.0', true ); }
 add_action( 'wp_enqueue_scripts', 'fon_scripts_mobs' );

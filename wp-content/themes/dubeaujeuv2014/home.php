@@ -20,9 +20,8 @@ get_header();
         <div class="intro">
             Merci d‘avoir joué ! <br><br>
             Avec <em>Du Beau Jeu</em>, j’ai envie de mettre en forme le jeu vidéo autrement,<br>
-            de découvrir des artistes, de réfléchir sur le medium loin de la course médiatique.<br>
-            En attendant que je finisse de développer le site, suivez le compte <a href="http://twitter.com/dubeaujeu">twitter</a><br>
-            シ
+            de découvrir des artistes, de réfléchir sur le medium loin de la course médiatique.<br><br>
+            En attendant que je finisse de développer le site, suivez le compte <a href="http://twitter.com/dubeaujeu">twitter</a> シ
         </div>
     </div>
 </div>

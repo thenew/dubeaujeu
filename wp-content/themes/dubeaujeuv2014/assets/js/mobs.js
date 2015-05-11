@@ -184,15 +184,23 @@ function mobs() {
 
     var update = function() {
         clearInterval(intervalId);
-        if(delay <= 400) {
-            delay -= 5;
-        } else if(delay <= 600) {
-            delay -= 10;
+        // if(delay <= 400) {
+        //     delay -= 2;
+        // } else if(delay <= 600) {
+        //     delay -= 6;
+        // } else {
+        //     delay -= (delay/10);
+        // }
+        if(counter < 3) {
+            delay = 600;
+        } else if (counter < 6) {
+            delay = 500;
         } else {
-            delay -= (delay/20);
+            delay -= (delay/10);
         }
         delay = Math.floor(delay);
-        console.log('delay : ', delay);
+        // console.log('delay : ', delay);
+        // console.log('counter : ', counter);
 
         // update counter
         counter--;

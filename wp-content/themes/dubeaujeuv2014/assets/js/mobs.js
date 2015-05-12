@@ -63,6 +63,16 @@ function mobs() {
             ease: Power2.easeOut,
             delay: 1.5
         });
+
+        if( typeof ga !== 'undefined' ) {
+            ga('send', {
+              'hitType': 'event',          // Required.
+              'eventCategory': 'mobs',   // Required.
+              'eventAction': 'gameover',      // Required.
+              'eventLabel': 'score',
+              'eventValue': counter
+            });
+        }
     }
 
     var pop = function() {

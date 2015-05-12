@@ -69,7 +69,7 @@ function mobs() {
               'hitType': 'event',          // Required.
               'eventCategory': 'mobs',   // Required.
               'eventAction': 'gameover',      // Required.
-              'eventLabel': 'score',
+              'eventLabel': 'score-'+getRandomInt(0, 999999999999),
               'eventValue': chrono
             });
         }

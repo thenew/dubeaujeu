@@ -70,7 +70,7 @@ function mobs() {
               'eventCategory': 'mobs',   // Required.
               'eventAction': 'gameover',      // Required.
               'eventLabel': 'score',
-              'eventValue': counter
+              'eventValue': chrono
             });
         }
     }

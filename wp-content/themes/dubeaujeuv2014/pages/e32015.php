@@ -13,48 +13,40 @@ add_action( 'wp_enqueue_scripts', 'fon_scripts_e32015' );
 get_header();
 ?>
 <div class="e32015-page">
+    <div class="bg"></div>
     <div class="logo-box">
         <?php require_once TEMPLATEPATH.'/assets/img/e32015/logo.svg'; ?>
     </div>
 
     <div class="e32015-planning">
-        <div class="day">
-            <div class="date">
-                <div class="day">15</div>
-                <div class="month">juin</div>
+        <div class="items">
+            <div class="item">
+                <div class="title">Bethesda</div>
+                <div class="hours">4 h (France - UTC+1)</div>
+                <div class="hours">4 h (Los Angeles - UTC-8)</div>
+                <a class="link" href="http://www.twitch.tv/bethesda" target="_blank">twitch.tv/bethesda</a>
             </div>
-            <div class="items">
-                <div class="item">
-                    <div class="title">Bethesda</div>
-                    <div class="hours">4 h (France - UTC+1)</div>
-                    <div class="hours">4 h (Los Angeles - UTC-8)</div>
-                    <a class="link" href="http://www.twitch.tv/bethesda" target="_blank">twitch.tv/bethesda</a>
-                </div>
-                <div class="item">
-                    <div class="title">Electronic Arts</div>
-                    <div class="hours">de 22 h à 23 h (France - UTC+1)</div>
-                </div>
+            <div class="item">
+                <div class="title">Electronic Arts</div>
+                <div class="hours">de 22 h à 23 h (France - UTC+1)</div>
             </div>
-        </div>
-        <div class="day">
-            <div class="date">
-                <div class="day">16</div>
-                <div class="month">juin</div>
+            <div class="item">
+                <div class="title">Ubisoft</div>
+                <div class="hours">00 h (France - UTC+1)</div>
             </div>
-            <div class="items">
-                <div class="item">
-                    <div class="title">Square Enix</div>
-                    <div class="hours">de 18 h à 19 h (France - UTC+1)</div>
-                </div>
+            <div class="item">
+                <div class="title">Square Enix</div>
+                <div class="hours">de 18 h à 19 h (France - UTC+1)</div>
             </div>
-        </div>
-
-        <div class="nc">
-            <div class="items">
-                <div class="item">Sony : inconnu</div>
-                <div class="item">Nintendo : inconnu</div>
-                <div class="item">Microsoft : inconnu</div>
-                <div class="item">Ubisoft : inconnu</div>
+            <div class="item">
+                <div class="title">Nintendo</div>
+                <div class="hours">18 h (France - UTC+1)</div>
+                <a class="link" href="http://e3.nintendo.com/" target="_blank">e3.nintendo.com</a>
+            </div>
+            <div class="item">
+                <div class="title">AMD PC Gaming Show</div>
+                <div class="hours">de 2 h à 5 h (France - UTC+1)</div>
+                <a class="link" href="http://www.pcgamingshow.com/" target="_blank">pcgamingshow.com</a>
             </div>
         </div>
     </div>
@@ -81,16 +73,23 @@ Konami ?
 
 15 juin
 Bethesda : à 4h
+~ MS le 15 juin vers 19h ou 20h
 EA : de 22h à 23h
 
 16 juin
+- 00h : Ubi
+~ Sony le 16 vers 2h ou 3h
 Square Enix : de 18h à 19h
+- 18h : Nintendo
+9 a.m. PT
+http://e3.nintendo.com/
 
 17 juin
 AMD PC Gaming Show :  de 2h à 5h
 
 
 Expo : 16 - 18 juin
+
 
 */
 get_footer();

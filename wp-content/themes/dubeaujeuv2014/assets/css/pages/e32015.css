@@ -35,7 +35,9 @@ body {
 }
 
 @media (max-width: 768px) {
-    background-size: auto;
+    .e32015-page .bg {
+        background-size: auto;
+    }
 }
 
 .e32015-page .logo-box {

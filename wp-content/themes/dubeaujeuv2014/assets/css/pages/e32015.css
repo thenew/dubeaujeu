@@ -1,10 +1,10 @@
-
 @font-face {
     font-family: 'Abril Fatface';
-    src: url("../fonts/abril/abrilfatface-regular.woff2") format("woff2"), url("../fonts/abril/abrilfatface-regular.woff") format("woff"), url("../fonts/abril/abrilfatface-regular.ttf") format("truetype");
+    src: url("../../fonts/abril/abrilfatface-regular.woff2") format("woff2"), url("../../fonts/abril/abrilfatface-regular.woff") format("woff"), url("../../fonts/abril/abrilfatface-regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
+
 
 body,
 html {
@@ -27,9 +27,11 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    background: url(../../img/e32015/e3-expo.jpg) center top no-repeat;
-    background-size: cover;
+    background: url(../../img/e32015/e3-expo-min.jpg) center top no-repeat;
+    background-size: contain;
     opacity: 0.05;
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
 }
 
 .e32015-page .logo-box {
@@ -76,16 +78,16 @@ body {
 
 .e32015-planning .item {
     position: relative;
-    padding: 30px 10px 10px 10px;
+    padding: 10px 20px 20px 20px;
     text-align: left;
     margin-bottom: 60px;
     background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .e32015-planning .title {
-    position: absolute;
-    top: -28px;
+    position: relative;
+    top: -38px;
     right: 0;
     left: 0;
     font-family: 'Abril Fatface', serif;
@@ -95,22 +97,43 @@ body {
     text-align: center;
 }
 
+.e32015-planning .infos {
+    margin-top: -30px;
+    line-height: 1.4;
+}
+
 .e32015-planning .hours {
     font-size: 14px;
 }
 
 .e32015-planning .link {
+    position: relative;
+    display: inline-block;
+    padding: 0 2px;
     font-size: 14px;
     text-decoration: none;
     color: #ed1d24;
     margin-top: 5px;
+    transition: color .2s;
 }
 
 .e32015-planning .link:after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
     display: block;
-    height: 1px;
+    width: 0;
+    height: 100%;
     background-color: #ed1d24;
+    transition: width .2s;
+}
+
+.e32015-planning .link:hover {
+    color: #fff;
+}
+
+.e32015-planning .link:hover:after {
+    width: 100%;
 }

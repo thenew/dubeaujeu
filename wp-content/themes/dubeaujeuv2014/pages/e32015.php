@@ -22,74 +22,60 @@ get_header();
         <div class="items">
             <div class="item">
                 <div class="title">Bethesda</div>
-                <div class="hours">4 h (France - UTC+1)</div>
-                <div class="hours">4 h (Los Angeles - UTC-8)</div>
-                <a class="link" href="http://www.twitch.tv/bethesda" target="_blank">twitch.tv/bethesda</a>
+                <div class="infos">
+                    <div class="hours">15 juin 3:30 (France)</div>
+                    <a class="link" href="http://www.twitch.tv/bethesda" target="_blank">twitch.tv/bethesda</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Microsoft</div>
+                <div class="infos">
+                    <div class="hours">15 juin 18:30 (France)</div>
+                    <a class="link" href="http://www.xbox.com/fr-FR/E3" target="_blank">xbox.com/e3</a>
+                </div>
             </div>
             <div class="item">
                 <div class="title">Electronic Arts</div>
-                <div class="hours">de 22 h à 23 h (France - UTC+1)</div>
+                <div class="infos">
+                    <div class="hours">15 juin 22:00 (France)</div>
+                </div>
             </div>
             <div class="item">
                 <div class="title">Ubisoft</div>
-                <div class="hours">00 h (France - UTC+1)</div>
+                <div class="infos">
+                    <div class="hours">16 juin 00:00 (France)</div>
+                </div>
             </div>
             <div class="item">
-                <div class="title">Square Enix</div>
-                <div class="hours">de 18 h à 19 h (France - UTC+1)</div>
+                <div class="title">Sony</div>
+                <div class="infos">
+                    <div class="hours">16 juin 03:00 (France)</div>
+                </div>
             </div>
             <div class="item">
                 <div class="title">Nintendo</div>
-                <div class="hours">18 h (France - UTC+1)</div>
-                <a class="link" href="http://e3.nintendo.com/" target="_blank">e3.nintendo.com</a>
+                <div class="infos">
+                    <div class="hours">16 juin 18:00 (France)</div>
+                    <a class="link" href="http://e3.nintendo.com/" target="_blank">e3.nintendo.com</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="title">Square Enix</div>
+                <div class="infos">
+                    <div class="hours">16 juin 19:00 (France)</div>
+                </div>
             </div>
             <div class="item">
                 <div class="title">AMD PC Gaming Show</div>
-                <div class="hours">de 2 h à 5 h (France - UTC+1)</div>
-                <a class="link" href="http://www.pcgamingshow.com/" target="_blank">pcgamingshow.com</a>
+                <div class="infos">
+                    <div class="hours">17 juin 19:00 (France)</div>
+                    <div class="hours">02:00 (France)</div>
+                    <a class="link" href="http://www.pcgamingshow.com/" target="_blank">pcgamingshow.com</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <?php
-/*
-Pour l’instant, les horaires (fr) des confs E3 confirmées :
-
-Sony : inconnu
-Nintendo : inconnu
-Microsoft : inconnu
-Ubisoft : inconnu
-
-Bethesda : 15 juin à 4h
-http://www.twitch.tv/bethesda
-
-Electronic Arts : 15 juin de 22h à 23h
-Square Enix : 16 Juin de 18h à 19h
-AMD PC Gaming Show :  17 juin de 2h à 5h
-http://www.pcgamingshow.com/
-
-Konami ?
-
-15 juin
-Bethesda : à 4h
-~ MS le 15 juin vers 19h ou 20h
-EA : de 22h à 23h
-
-16 juin
-- 00h : Ubi
-~ Sony le 16 vers 2h ou 3h
-Square Enix : de 18h à 19h
-- 18h : Nintendo
-9 a.m. PT
-http://e3.nintendo.com/
-
-17 juin
-AMD PC Gaming Show :  de 2h à 5h
-
-
-Expo : 16 - 18 juin
-
-
-*/
 get_footer();

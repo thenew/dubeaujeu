@@ -34,6 +34,10 @@ body {
     filter: sepia(100%);
 }
 
+@media (max-width: 768px) {
+    background-size: auto;
+}
+
 .e32015-page .logo-box {
     display: flex;
     justify-content: center;
@@ -68,6 +72,13 @@ body {
 .e32015-planning {
     width: 500px;
     margin: 0 auto 60px;
+}
+
+@media (max-width: 768px) {
+    .e32015-planning {
+        width: 100%;
+        padding: 0 20px;
+    }
 }
 
 .e32015-planning .items {

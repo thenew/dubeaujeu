@@ -1,5 +1,5 @@
 <?php // Chargement des JS
-add_action('init', 'fon_script_init');
+add_action('wp_enqueue_scripts', 'fon_script_init');
 function fon_script_init() {
     if (!is_admin()){
         // wp_enqueue_script('mootools',ASSETS_URL.'/js/lib/mootools-core-1.4.5-full-compat-yc.js','','1.4.5',false);

@@ -1,0 +1,26 @@
+{
+  "key":"group_5579f51d21fe6",
+  "title":"Vid\u00e9os",
+  "fields":[
+    
+  ],
+  "location":[
+    [
+      {
+        "param":"post_type",
+        "operator":"==",
+        "value":"game"
+      }
+    ]
+  ],
+  "menu_order":0,
+  "position":"normal",
+  "style":"seamless",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":[
+    
+  ],
+  "old_ID":951,
+  "modified":1434055965
+}

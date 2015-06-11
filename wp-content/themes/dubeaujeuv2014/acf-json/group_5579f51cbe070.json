@@ -1,0 +1,26 @@
+{
+  "key":"group_5579f51cbe070",
+  "title":"Cr\u00e9dits",
+  "fields":[
+    
+  ],
+  "location":[
+    [
+      {
+        "param":"attachment",
+        "operator":"==",
+        "value":"all"
+      }
+    ]
+  ],
+  "menu_order":0,
+  "position":"normal",
+  "style":"default",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":[
+    
+  ],
+  "old_ID":944,
+  "modified":1434055964
+}

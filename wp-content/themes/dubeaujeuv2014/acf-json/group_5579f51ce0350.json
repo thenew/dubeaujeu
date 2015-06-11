@@ -1,0 +1,40 @@
+{
+  "key":"group_5579f51ce0350",
+  "title":"Liens",
+  "fields":[
+    
+  ],
+  "location":[
+    [
+      {
+        "param":"post_type",
+        "operator":"==",
+        "value":"game"
+      }
+    ],
+    [
+      {
+        "param":"post_type",
+        "operator":"==",
+        "value":"person"
+      }
+    ],
+    [
+      {
+        "param":"post_type",
+        "operator":"==",
+        "value":"company"
+      }
+    ]
+  ],
+  "menu_order":0,
+  "position":"normal",
+  "style":"seamless",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":[
+    
+  ],
+  "old_ID":950,
+  "modified":1434055964
+}

@@ -1,0 +1,26 @@
+{
+  "key":"group_5579f51d13a2a",
+  "title":"metadatas",
+  "fields":[
+    
+  ],
+  "location":[
+    [
+      {
+        "param":"attachment",
+        "operator":"==",
+        "value":"all"
+      }
+    ]
+  ],
+  "menu_order":0,
+  "position":"normal",
+  "style":"default",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":[
+    
+  ],
+  "old_ID":953,
+  "modified":1434055965
+}

@@ -108,6 +108,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    cursor: pointer;
 }
 
 .brick-item .pswp-trigger .html {
@@ -122,6 +123,15 @@
     width: 85%;
     margin-left: auto;
     margin-right: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 .video-inner {
@@ -203,9 +213,9 @@
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-align-items: middle;
-    -ms-flex-align: middle;
-    align-items: middle;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 .handfont {

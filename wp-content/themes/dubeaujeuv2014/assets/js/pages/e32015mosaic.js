@@ -103,7 +103,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
     var parseThumbnailElements = function(el) {
-        var thumbElements = el.querySelectorAll('a'),
+        var thumbElements = el.querySelectorAll('a, .html'),
             numNodes = thumbElements.length,
             items = [],
             figureEl,
@@ -121,30 +121,39 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             // }
 
             // linkEl = figureEl.children[0]; // <a> element
-            linkEl = thumbElements[i]; // <a> element
+                linkEl = thumbElements[i];
+            // <a> element
+            console.log('linkEl.classList.contains : ', linkEl.classList.contains('html'));
+            if( ! linkEl.classList.contains('html') ) {
 
-            size = linkEl.getAttribute('data-size').split('x');
+                size = linkEl.getAttribute('data-size').split('x');
 
-            // create slide object
-            item = {
-                src: linkEl.getAttribute('href'),
-                w: parseInt(size[0], 10),
-                h: parseInt(size[1], 10)
-            };
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: parseInt(size[0], 10),
+                    h: parseInt(size[1], 10)
+                };
 
 
 
-            // if(linkEl.children.length > 1) {
-            //     // <figcaption> content
-            //     item.title = linkEl.children[1].innerHTML;
-            // }
+                // if(linkEl.children.length > 1) {
+                //     // <figcaption> content
+                //     item.title = linkEl.children[1].innerHTML;
+                // }
 
-            if(linkEl.children.length > 0) {
-                // <img> thumbnail element, retrieving thumbnail url
-                item.msrc = linkEl.children[0].getAttribute('src');
+                if(linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                }
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+            } else {
+                item = {
+                    html: linkEl.innerHTML
+                }
+
             }
-
-            item.el = figureEl; // save link to element for getThumbBoundsFn
             items.push(item);
         }
 
@@ -195,7 +204,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         // }
 
         clickedGallery = this;
-        index = 1;
+        index = 0;
 
         if(index >= 0) {
             // open PhotoSwipe if valid index found

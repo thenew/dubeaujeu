@@ -31,25 +31,41 @@ the_post();
             <?php while ( have_rows('items') ) : the_row();
                 $title = get_sub_field('title');
                 $thumbnail = get_sub_field('thumbnail');
+                $intro = get_sub_field('intro');
+                $video = get_sub_field('video');
                 $images = get_sub_field('images');
                 $format = get_sub_field('format');
                 ?>
                 <div class="brick-item format-<?php echo $format ?> anim-item anim-tilt">
                     <div class="brick-outer">
                     <div class="brick-inner <?php if( ! empty($images) ) echo 'pswp-gallery'; ?>">
-                        <button type="button" class="button-reset pswp-trigger">
+                        <div class="bg" style="background-image: url(<?php echo $thumbnail['sizes']['large']; ?>);"></div>
+                        <div class="overlay"></div>
+                        <div class="title"><?php echo $title; ?></div>
+                        <div class="pswp-trigger">
+                            <?php if( ! empty( $intro ) ): ?>
+                                <div class="html">
+                                    <?php echo $intro; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if( ! empty( $video ) ): ?>
+                                <div class="html">
+                                    <div class="video-outer">
+                                    <div class="video-inner">
+                                        <?php echo $video; ?>
+                                    </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                             <?php if( $images ): ?>
                                 <?php foreach( $images as $image ): ?>
                                     <a href="<?php echo $image['url']; ?>" class="pswp-item" data-size="<?php echo $image['width']; ?>x<?php echo $image['height']; ?>">
-                                        <!-- <img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" hidden />
-                                        <p hidden><?php echo $image['caption']; ?></p> -->
+                                        <?php /* ?><img src="<?php echo $image['sizes']['thumbnail']; ?>" alt="<?php echo $image['alt']; ?>" hidden />
+                                        <p hidden><?php echo $image['caption']; ?></p> --><?php */ ?>
                                     </a>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                            <div class="bg" style="background-image: url(<?php echo $thumbnail['sizes']['large']; ?>);"></div>
-                            <div class="overlay"></div>
-                            <div class="title"><?php echo $title; ?></div>
-                        </button>
+                        </div>
                     </div>
                     </div>
                 </div>

@@ -101,6 +101,45 @@
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
+.brick-item .pswp-trigger {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.brick-item .pswp-trigger .html {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.video-outer {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.video-inner iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
 @media (max-width: 980px) {
     .brick-item {
         width: 100%;

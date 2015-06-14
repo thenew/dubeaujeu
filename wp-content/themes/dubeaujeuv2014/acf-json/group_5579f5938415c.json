@@ -68,7 +68,7 @@
         },
         {
           "key":"field_5579f72f7c24e",
-          "label":"",
+          "label":"Miniature",
           "name":"thumbnail",
           "prefix":"",
           "type":"image",
@@ -93,8 +93,8 @@
         },
         {
           "key":"field_5579f6fc7c24d",
-          "label":"",
-          "name":"image",
+          "label":"Images",
+          "name":"images",
           "prefix":"",
           "type":"gallery",
           "instructions":"",
@@ -116,6 +116,36 @@
           "max_height":"",
           "max_size":"",
           "mime_types":""
+        },
+        {
+          "key":"field_557c176cd2c9f",
+          "label":"Format",
+          "name":"format",
+          "prefix":"",
+          "type":"select",
+          "instructions":"",
+          "required":0,
+          "conditional_logic":0,
+          "wrapper":{
+            "width":"",
+            "class":"",
+            "id":""
+          },
+          "choices":{
+            "56pct":"56pct",
+            "43pct":"43pct",
+            "28pct":"28pct"
+          },
+          "default_value":{
+            "56pct":"56pct"
+          },
+          "allow_null":0,
+          "multiple":0,
+          "ui":0,
+          "ajax":0,
+          "placeholder":"",
+          "disabled":0,
+          "readonly":0
         }
       ]
     }
@@ -135,5 +165,5 @@
   "label_placement":"top",
   "instruction_placement":"label",
   "hide_on_screen":"",
-  "modified":1434057085
+  "modified":1434211407
 }

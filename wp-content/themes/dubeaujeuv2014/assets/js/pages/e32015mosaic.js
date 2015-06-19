@@ -370,13 +370,33 @@ function tilt(event) {
     tiltx = - (dy / cy) * 1.5;
     tilty = (dx / cx) * 1;
     radius = Math.sqrt(Math.pow(tiltx,2) + Math.pow(tilty,2));
-    degree = (radius * 5);
-  //   console.log('tiltx : ', tiltx);
-  //   console.log('tilty : ', tilty);
-  // console.log('degree : ', degree);
+    degree = (radius * 3);
+
+    degree = Math.round(degree * 100) / 100;
+    tiltx = Math.round(tiltx * 100) / 100;
+    tilty = Math.round(tilty * 100) / 100;
+    if(degree > 5) {
+        degree = 5;
+    }
+    if(tiltx > 0.2) {
+        tiltx = 0.2;
+    }
+    if(tiltx < -0.2) {
+        tiltx = -0.2;
+    }
+
+    if(tilty > 0.2) {
+        tilty = 0.2;
+    }
+    if(tilty < -0.2) {
+        tilty = -0.2;
+    }
+    // console.log('tiltx : ', tiltx);
+    // console.log('tilty : ', tilty);
+    // console.log('degree : ', degree);
 
     TweenLite.set(".anim-tilt", {transform:'rotate3d(' + tiltx + ', ' + tilty + ', 0, ' + degree + 'deg)'});
-    TweenLite.set(".anim-tilt-reverse", {transform:'rotate3d(' + (-tiltx) + ', ' + (-tilty) + ', 0, ' + degree + 'deg)'});
+    //TweenLite.set(".anim-tilt-reverse", {transform:'rotate3d(' + (-tiltx) + ', ' + (-tilty) + ', 0, ' + degree + 'deg)'});
 }
 
 

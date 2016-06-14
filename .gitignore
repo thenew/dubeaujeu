@@ -26,3 +26,7 @@ wp-content/plugins/media-placeholders/
 wp-content/plugins/wordpress-importer/
 wp-content/languages/plugins/wordpress-importer*
 wp-content/uploads_preprod/
+e32016/.sass-cache/
+e32016/node_modules/
+node_modules/
+*.map

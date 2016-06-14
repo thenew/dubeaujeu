@@ -280,6 +280,13 @@ body {
   @media (max-width: 768px) { transform: translate(-1*$x, 0); }
 }
 
+.box-13 {
+  top: 4*$x;
+  transform: translate(2*$x, 0);
+
+  @media (max-width: 768px) { transform: translate(-1*$x, 0); }
+}
+
 
 @media (max-width: 768px) {
   .box {
